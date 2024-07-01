@@ -8,7 +8,7 @@ import model.Lecturer;
 
 public class LecturerAccDBContext extends DBContext<Lecturer_Account> {
 
-    public Lecturer_Account getUserByUsernamePassword(String username, String password) {
+    public Lecturer_Account getLecturerAccount(String username, String password) {
         PreparedStatement stm = null;
         Lecturer_Account user = null;
         try {

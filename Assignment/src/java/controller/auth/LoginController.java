@@ -23,10 +23,11 @@ public class LoginController extends HttpServlet {
         String password = request.getParameter("password");
 
         LecturerAccDBContext db = new LecturerAccDBContext();
-        Lecturer_Account user = db.getUserByUsernamePassword(username, password);
+        Lecturer_Account user = db.getLecturerAccount(username, password);
         if (user != null) {
             request.getSession().setAttribute("user", user);
-            response.getWriter().println("Login successful!" + user.getDisplayname());
+            response.getWriter().println("Login successful!");
+            response.getWriter().println("Welcome " + user.getDisplayname());
         } else {
             response.getWriter().println("Login failed!");
         }
