@@ -1,13 +1,14 @@
 package model;
 
+import java.util.List;
 import java.util.ArrayList;
 
 public class Lecturer {
 
     private int id;
     private String name;
-    private ArrayList<Course> courses = new ArrayList<>();
-    private Lecturer_Account user;
+    private List<Course> courses = new ArrayList<>();
+    private Lecturer_Account lecturerAccount;
 
     public int getId() {
         return id;
@@ -25,20 +26,19 @@ public class Lecturer {
         this.name = name;
     }
 
-    public ArrayList<Course> getCourses() {
+    public List<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(ArrayList<Course> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 
-    public Lecturer_Account getUser() {
-        return user;
+    public Lecturer_Account getLecturerAccount() {
+        return lecturerAccount;
     }
 
-    public void setUser(Lecturer_Account user) {
-        this.user = user;
+    public void setLecturerAccount(Lecturer_Account lecturerAccount) {
+        this.lecturerAccount = lecturerAccount;
     }
-
 }

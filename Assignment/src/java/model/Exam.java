@@ -19,6 +19,14 @@ public class Exam {
         this.grades = grades;
     }
 
+    public void addGrade(Grade grade) {
+        this.grades.add(grade);
+    }
+
+    public void removeGrade(Grade grade) {
+        this.grades.remove(grade);
+    }
+
     public int getId() {
         return id;
     }

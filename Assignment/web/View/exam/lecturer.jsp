@@ -11,14 +11,14 @@
             <c:if test="${requestScope.courses.size() > 0}">
                 <form action="lecturer" method="POST">
                     <input type="hidden" name="lid" value="${param.lid}"/>
-                    course: <select name="cid">
+                    Course: <select name="cid">
                         <c:forEach items="${requestScope.courses}" var="c">
                             <option value="${c.id}">
                                 ${c.name}
                             </option>
                         </c:forEach>
                     </select>
-                    <input type="submit" value="view"/>
+                    <input type="submit" value="View"/>
                 </form>
             </c:if>
         </c:if>
@@ -29,7 +29,7 @@
                     <input type="checkbox" name="eid" value="${e.id}" /> 
                     ${e.assessment.name}-(${e.from}:${e.assessment.weight}%) <br/>
                 </c:forEach>
-                <input type="submit" value="take"/>
+                <input type="submit" value="Take"/>
             </form>
 
         </c:if>

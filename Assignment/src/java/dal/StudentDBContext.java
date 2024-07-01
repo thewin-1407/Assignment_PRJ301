@@ -14,11 +14,11 @@ public class StudentDBContext extends DBContext<Student> {
         ArrayList<Student> students = new ArrayList<>();
         PreparedStatement stm = null;
         try {
-            String sql = """
-                         SELECT s.sid,s.sname FROM students s INNER JOIN students_courses sc ON s.sid = sc.sid
-                         \t\t\t\t\t\tINNER JOIN courses c ON c.cid = sc.cid
-                         \t\t\t\t\t\tWHERE c.cid = ?""";
-
+            String sql = "SELECT s.sid, s.sname "
+                    + "FROM students s "
+                    + "INNER JOIN students_courses sc ON s.sid = sc.sid "
+                    + "INNER JOIN courses c ON c.cid = sc.cid "
+                    + "WHERE c.cid = ?";
             stm = connection.prepareStatement(sql);
             stm.setInt(1, cid);
             ResultSet rs = stm.executeQuery();
@@ -28,15 +28,18 @@ public class StudentDBContext extends DBContext<Student> {
                 s.setName(rs.getString("sname"));
                 students.add(s);
             }
-
         } catch (SQLException ex) {
-            Logger.getLogger(StudentDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentDBContext.class.getName()).log(Level.SEVERE, "Error retrieving students by course", ex);
         } finally {
             try {
-                stm.close();
-                connection.close();
+                if (stm != null) {
+                    stm.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
             } catch (SQLException ex) {
-                Logger.getLogger(StudentDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(StudentDBContext.class.getName()).log(Level.SEVERE, "Error closing resources", ex);
             }
         }
         return students;
