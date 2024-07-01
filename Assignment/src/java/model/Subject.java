@@ -1,14 +1,13 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Subject {
 
     private int id;
     private String name;
-    private List<Course> courses = new ArrayList<>();
-    private List<Assessment> assessments = new ArrayList<>();
+    private ArrayList<Course> courses = new ArrayList<>();
+    private ArrayList<Assessment> assessments = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -26,19 +25,20 @@ public class Subject {
         this.name = name;
     }
 
-    public List<Course> getCourses() {
+    public ArrayList<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<Course> courses) {
+    public void setCourses(ArrayList<Course> courses) {
         this.courses = courses;
     }
 
-    public List<Assessment> getAssessments() {
+    public ArrayList<Assessment> getAssessments() {
         return assessments;
     }
 
-    public void setAssessments(List<Assessment> assessments) {
+    public void setAssessments(ArrayList<Assessment> assessments) {
         this.assessments = assessments;
     }
+
 }

@@ -1,13 +1,11 @@
 package dal;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import model.Exam;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Assessment;
-import model.Exam;
 import model.Subject;
 
 public class ExamDBContext extends DBContext<Exam> {
@@ -16,12 +14,11 @@ public class ExamDBContext extends DBContext<Exam> {
         ArrayList<Exam> exams = new ArrayList<>();
         PreparedStatement stm = null;
         try {
-            String sql = "SELECT e.eid, e.duration, e.[from], a.aid, a.aname, a.weight, sub.subid, sub.subname "
-                    + "FROM exams e "
-                    + "INNER JOIN assessments a ON a.aid = e.aid "
-                    + "INNER JOIN subjects sub ON sub.subid = a.subid "
-                    + "INNER JOIN courses c ON c.subid = sub.subid "
-                    + "WHERE c.cid = ?";
+            String sql = """
+                         SELECT e.eid,e.duration,e.[from],a.aid,a.aname,a.weight,sub.subid,sub.subname FROM exams e INNER JOIN assesments a ON a.aid = e.aid
+                         \t\t\tINNER JOIN subjects sub ON sub.subid = a.subid
+                         \t\t\tINNER JOIN courses c ON c.subid = sub.subid
+                         \t\t\tWHERE c.cid = ?""";
 
             stm = connection.prepareStatement(sql);
             stm.setInt(1, cid);
@@ -47,14 +44,13 @@ public class ExamDBContext extends DBContext<Exam> {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(ExamDBContext.class.getName()).log(Level.SEVERE, "Error retrieving exams by course ID", ex);
+            Logger.getLogger(ExamDBContext.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                if (stm != null) {
-                    stm.close();
-                }
+                stm.close();
+                connection.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ExamDBContext.class.getName()).log(Level.SEVERE, "Error closing statement", ex);
+                Logger.getLogger(ExamDBContext.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return exams;
@@ -64,20 +60,18 @@ public class ExamDBContext extends DBContext<Exam> {
         ArrayList<Exam> exams = new ArrayList<>();
         PreparedStatement stm = null;
         try {
-            StringBuilder sqlBuilder = new StringBuilder();
-            sqlBuilder.append("SELECT e.eid, e.[from], a.aid, a.aname, a.weight ")
-                    .append("FROM exams e ")
-                    .append("INNER JOIN assessments a ON a.aid = e.aid ")
-                    .append("WHERE (1 > 2)");
+            String sql = """
+                         SELECT e.eid,e.[from],a.aid,a.aname,a.weight FROM exams e INNER JOIN assesments a ON a.aid = e.aid
+                         \t\t\t\t\t\tWHERE (1 > 2)""";
 
             for (Integer eid : eids) {
-                sqlBuilder.append(" OR eid = ?");
+                sql += " OR eid = ?";
             }
 
-            stm = connection.prepareStatement(sqlBuilder.toString());
+            stm = connection.prepareStatement(sql);
 
             for (int i = 0; i < eids.size(); i++) {
-                stm.setInt(i + 1, eids.get(i));
+                stm.setInt((i + 1), eids.get(i));
             }
 
             ResultSet rs = stm.executeQuery();
@@ -96,16 +90,16 @@ public class ExamDBContext extends DBContext<Exam> {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(ExamDBContext.class.getName()).log(Level.SEVERE, "Error retrieving exams by exam IDs", ex);
+            Logger.getLogger(ExamDBContext.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                if (stm != null) {
-                    stm.close();
-                }
+                stm.close();
+                connection.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ExamDBContext.class.getName()).log(Level.SEVERE, "Error closing statement", ex);
+                Logger.getLogger(ExamDBContext.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return exams;
     }
+
 }
