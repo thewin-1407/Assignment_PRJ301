@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,14 +13,14 @@
             <c:if test="${requestScope.courses.size() > 0}">
                 <form action="lecturer" method="POST">
                     <input type="hidden" name="lid" value="${param.lid}"/>
-                    course: <select name="cid">
+                    Course: <select name="cid">
                         <c:forEach items="${requestScope.courses}" var="c">
                             <option value="${c.id}">
                                 ${c.name}
                             </option>
                         </c:forEach>
                     </select>
-                    <input type="submit" value="view"/>
+                    <input type="submit" value="Edit"/>
                 </form>
             </c:if>
         </c:if>
@@ -27,11 +29,13 @@
                 <input type="hidden" name="cid" value="${param.cid}"/>
                 <c:forEach items="${requestScope.exams}" var="e">
                     <input type="checkbox" name="eid" value="${e.id}" /> 
-                    ${e.assessment.name}-(${e.from}:${e.assessment.weight}%) <br/>
+                    ${e.assessment.name} : <fmt:formatNumber value="${e.assessment.weight * 100}" type="number" maxFractionDigits="0"/>% - (${fn:substring(e.from, 0, 10)} ${fn:substring(e.from, 11, 16)}) <br/>
                 </c:forEach>
-                <input type="submit" value="take"/>
+                <br/>
+                <input type="submit" value="Take"/>
             </form>
-
         </c:if>
+
+        <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>

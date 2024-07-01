@@ -6,6 +6,7 @@
         <title>Logout</title>
     </head>
     <body>
-        <div>Bye</div>
+        <h1>Logout Successfully</h1>
+        <a href="http://localhost:1407/Assignment/login">Login</a>
     </body>
 </html>
