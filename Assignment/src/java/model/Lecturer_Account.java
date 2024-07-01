@@ -4,7 +4,7 @@ public class Lecturer_Account {
 
     private String username;
     private String password;
-    private String displayname;
+    private String displayName;
     private Lecturer lecturer;
 
     public String getUsername() {
@@ -23,12 +23,12 @@ public class Lecturer_Account {
         this.password = password;
     }
 
-    public String getDisplayname() {
-        return displayname;
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setDisplayname(String displayname) {
-        this.displayname = displayname;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public Lecturer getLecturer() {

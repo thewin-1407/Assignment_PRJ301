@@ -1,13 +1,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Student {
 
     private int id;
     private String name;
-    private ArrayList<Course> courses = new ArrayList<>();
-    private ArrayList<Grade> gardes = new ArrayList<>();
+    private List<Course> courses = new ArrayList<>();
+    private List<Grade> grades = new ArrayList<>();
     private Student_Account user;
 
     public int getId() {
@@ -26,20 +27,20 @@ public class Student {
         this.name = name;
     }
 
-    public ArrayList<Course> getCourses() {
+    public List<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(ArrayList<Course> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 
-    public ArrayList<Grade> getGardes() {
-        return gardes;
+    public List<Grade> getGrades() {
+        return grades;
     }
 
-    public void setGardes(ArrayList<Grade> gardes) {
-        this.gardes = gardes;
+    public void setGrades(List<Grade> grades) {
+        this.grades = grades;
     }
 
     public Student_Account getUser() {
@@ -49,5 +50,4 @@ public class Student {
     public void setUser(Student_Account user) {
         this.user = user;
     }
-
 }
