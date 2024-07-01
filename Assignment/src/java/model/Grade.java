@@ -27,6 +27,9 @@ public class Grade {
     }
 
     public void setScore(float score) {
+        if (score < 0 || score > 10) {
+            throw new IllegalArgumentException("Score must be between 0 and 10");
+        }
         this.score = score;
     }
 

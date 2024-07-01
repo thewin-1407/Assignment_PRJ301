@@ -16,7 +16,7 @@ public class GradeDBContext extends DBContext<Grade> {
         ArrayList<Grade> grades = new ArrayList<>();
         PreparedStatement stm = null;
         try {
-            String sql = "SELECT eid,sid,score FROM grades WHERE (1 > 2)";
+            String sql = "SELECT eid, sid, score FROM grades WHERE (1 > 2)";
             for (Integer eid : eids) {
                 sql += " OR eid = ?";
             }
@@ -24,7 +24,7 @@ public class GradeDBContext extends DBContext<Grade> {
             stm = connection.prepareStatement(sql);
 
             for (int i = 0; i < eids.size(); i++) {
-                stm.setInt((i + 1), eids.get(i));
+                stm.setInt(i + 1, eids.get(i));
             }
 
             ResultSet rs = stm.executeQuery();
@@ -44,68 +44,64 @@ public class GradeDBContext extends DBContext<Grade> {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, "Error retrieving grades by exam IDs", ex);
         } finally {
             try {
-                stm.close();
-                connection.close();
+                if (stm != null) {
+                    stm.close();
+                }
             } catch (SQLException ex) {
-                Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, "Error closing statement", ex);
             }
         }
         return grades;
     }
 
     public void insertGradesForCourse(int cid, ArrayList<Grade> grades) {
-        String sql_remove = "DELETE grades WHERE sid IN (SELECT sid FROM students_courses WHERE cid = ?)";
-        String sql_insert = """
-                            INSERT INTO [grades]
-                                       ([eid]
-                                       ,[sid]
-                                       ,[score])
-                                 VALUES
-                                       (?
-                                       ,?
-                                       ,?)""";
+        String sql_remove = "DELETE FROM grades WHERE sid IN (SELECT sid FROM students_courses WHERE cid = ?)";
+        String sql_insert = "INSERT INTO grades (eid, sid, score) VALUES (?, ?, ?)";
 
         PreparedStatement stm_remove = null;
-        ArrayList<PreparedStatement> stm_inserts = new ArrayList<>();
+        PreparedStatement stm_insert = null;
 
         try {
             connection.setAutoCommit(false);
+
+            // Remove existing grades for the course
             stm_remove = connection.prepareStatement(sql_remove);
             stm_remove.setInt(1, cid);
             stm_remove.executeUpdate();
 
+            // Insert new grades
+            stm_insert = connection.prepareStatement(sql_insert);
             for (Grade grade : grades) {
-                PreparedStatement stm_insert = connection.prepareStatement(sql_insert);
                 stm_insert.setInt(1, grade.getExam().getId());
                 stm_insert.setInt(2, grade.getStudent().getId());
                 stm_insert.setFloat(3, grade.getScore());
-                stm_insert.executeUpdate();
-                stm_inserts.add(stm_insert);
+                stm_insert.addBatch();
             }
+            stm_insert.executeBatch();
+
             connection.commit();
         } catch (SQLException ex) {
-            Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, "Error inserting grades for course", ex);
             try {
                 connection.rollback();
             } catch (SQLException ex1) {
-                Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex1);
+                Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, "Error rolling back transaction", ex1);
             }
         } finally {
             try {
                 connection.setAutoCommit(true);
-                stm_remove.close();
-                for (PreparedStatement stm_insert : stm_inserts) {
+                if (stm_remove != null) {
+                    stm_remove.close();
+                }
+                if (stm_insert != null) {
                     stm_insert.close();
                 }
-                connection.close();
             } catch (SQLException ex) {
-                Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, "Error closing statements", ex);
             }
         }
-
     }
-
 }

@@ -27,7 +27,7 @@ public class LoginController extends HttpServlet {
         if (user != null) {
             request.getSession().setAttribute("user", user);
             response.getWriter().println("Login successful!");
-            response.getWriter().println("Welcome " + user.getDisplayname());
+            response.getWriter().println("Welcome " + user.getDisplayName());
         } else {
             response.getWriter().println("Login failed!");
         }
