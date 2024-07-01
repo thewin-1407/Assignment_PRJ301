@@ -7,27 +7,34 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Lecturer_Account;
+import model.Student_Account;
 
 public class LogoutController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Lecturer_Account user = (Lecturer_Account) request.getSession().getAttribute("user");
+        Object userObj = request.getSession().getAttribute("user");
+
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
-            for (Cookie cooky : cookies) {
-                if (cooky.getName().equals("auth_token")) {
-                    cooky.setMaxAge(0);
-                    response.addCookie(cooky);
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("auth_token")) {
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
                 }
             }
         }
-        if (user != null) {
 
-            request.getSession().removeAttribute("user");
-            request.setAttribute("message", "Logout successful!");
-            request.getRequestDispatcher("View/auth/logout.jsp").forward(request, response);
+        if (userObj != null) {
+            if (userObj instanceof Lecturer_Account) {
+                Lecturer_Account lecturerAccount = (Lecturer_Account) userObj;
+                request.getSession().removeAttribute("user");
+            } else if (userObj instanceof Student_Account) {
+                Student_Account studentAccount = (Student_Account) userObj;
+                request.getSession().removeAttribute("user");
+            }
         }
+        response.sendRedirect("login");
     }
 
     @Override
@@ -44,7 +51,7 @@ public class LogoutController extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "LogoutController: Handles user logout functionality.";
     }
 
 }

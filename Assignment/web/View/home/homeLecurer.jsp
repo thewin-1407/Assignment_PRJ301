@@ -6,10 +6,9 @@
         <title>Student Management System</title>
     </head>
     <body>
-        <h1 style="text-align: center">Hello World!</h1>
+        <h1 style="text-align: center">Hello Lecturer!</h1>
         <a href="http://localhost:1407/Assignment/logout">Logout</a>
         <br/><br/>
         <a href="http://localhost:1407/Assignment/exam/lecturer">My Courses</a>
-
     </body>
 </html>
