@@ -2,13 +2,16 @@
 SELECT
     s.sid AS StudentID,
     s.sname AS StudentName,
-    c.cname AS CourseName
+    c.cname AS CourseName,
+    l.lname AS LecturerName
 FROM
     students s
 INNER JOIN
     courses_students cs ON s.sid = cs.sid
 INNER JOIN
     courses c ON cs.cid = c.cid
+INNER JOIN
+    lecturers l ON c.lid = l.lid
 WHERE
     s.sid = ?
 
