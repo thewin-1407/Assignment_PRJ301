@@ -26,12 +26,11 @@ public class LoginController extends HttpServlet {
         Lecturer_Account user = db.getLecturerAccount(username, password);
         if (user != null) {
             request.getSession().setAttribute("user", user);
-            response.getWriter().println("Login successful!");
-            response.getWriter().println("Welcome " + user.getDisplayname());
+            response.sendRedirect("Home"); 
         } else {
-            response.getWriter().println("Login failed!");
+            request.setAttribute("errorMessage", "Invalid username or password");
+            request.getRequestDispatcher("View/auth/login.jsp").forward(request, response); // Quay lại trang đăng nhập với thông báo lỗi
         }
-
     }
 
     @Override
