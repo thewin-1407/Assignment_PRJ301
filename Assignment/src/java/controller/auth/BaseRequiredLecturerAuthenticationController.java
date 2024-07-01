@@ -10,7 +10,7 @@ import model.Lecturer_Account;
 
 public abstract class BaseRequiredLecturerAuthenticationController extends HttpServlet {
 
-    private boolean isAuthenticated(HttpServletRequest request) {
+    private boolean isLecAuthenticated(HttpServletRequest request) {
         Lecturer_Account user = (Lecturer_Account) request.getSession().getAttribute("user");
         if (user == null) {
             return false;
@@ -24,7 +24,7 @@ public abstract class BaseRequiredLecturerAuthenticationController extends HttpS
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Lecturer_Account user = (Lecturer_Account) request.getSession().getAttribute("user");
-        if (isAuthenticated(request)) {
+        if (isLecAuthenticated(request)) {
             doGet(request, response, user, user.getLecturer());
         } else {
             response.getWriter().println("Access denied!");
@@ -41,7 +41,7 @@ public abstract class BaseRequiredLecturerAuthenticationController extends HttpS
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Lecturer_Account user = (Lecturer_Account) request.getSession().getAttribute("user");
-        if (isAuthenticated(request)) {
+        if (isLecAuthenticated(request)) {
             doPost(request, response, user, user.getLecturer());
         } else {
             response.getWriter().println("Access denied!");

@@ -6,13 +6,14 @@
         <title>Login</title>
     </head>
     <body>
-        <% if (request.getAttribute("errorMessage") != null) { %>
-        <div style="color: red;"><%= request.getAttribute("errorMessage") %></div>
-        <% } %>
         <form action="login" method="POST">
             Username: <input type="text" name="username" required/> <br/><br/>
             Password: <input type="password" name="password" required/> <br/><br/>
             <input type="submit" value="Login"/>
         </form>
+        <br/>
+        <% if (request.getAttribute("errorMessage") != null) { %>
+        <div><%= request.getAttribute("errorMessage") %></div>
+        <% } %>
     </body>
 </html>

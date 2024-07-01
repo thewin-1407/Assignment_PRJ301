@@ -8,11 +8,11 @@ import java.io.IOException;
 import model.Lecturer;
 import model.Lecturer_Account;
 
-public class HomeController extends BaseRequiredLecturerAuthenticationController {
+public class HomeLecturerController extends BaseRequiredLecturerAuthenticationController {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        request.getRequestDispatcher("View/home/homeLecurer.jsp").forward(request, response);
     }
 
     @Override
