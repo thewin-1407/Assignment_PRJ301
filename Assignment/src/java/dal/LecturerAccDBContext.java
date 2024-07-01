@@ -17,7 +17,7 @@ public class LecturerAccDBContext extends DBContext<Lecturer_Account> {
                          FROM lecturers_account la 
                          LEFT JOIN lecturers_users lu ON lu.username = la.username 
                          LEFT JOIN lecturers l ON lu.lid = l.lid 
-                         WHERE la.username = '?' AND la.[password] = '?'""";
+                         WHERE la.username = ? AND la.[password] = ?""";
             stm = connection.prepareStatement(sql);
             stm.setString(1, username);
             stm.setString(2, password);
