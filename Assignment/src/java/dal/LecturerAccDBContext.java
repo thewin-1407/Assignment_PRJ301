@@ -10,7 +10,7 @@ public class LecturerAccDBContext extends DBContext<Lecturer_Account> {
 
     public Lecturer_Account getUserByUsernamePassword(String username, String password) {
         PreparedStatement stm = null;
-        Lecturer_Account user = null;
+        Lecturer_Account userLecturer = null;
         try {
             String sql = """
                          SELECT u.username,u.displayname,l.lid,l.lname
@@ -22,15 +22,15 @@ public class LecturerAccDBContext extends DBContext<Lecturer_Account> {
             stm.setString(2, password);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
-                user = new Lecturer_Account();
-                user.setDisplayname(rs.getString("displayname"));
-                user.setUsername(username);
+                userLecturer = new Lecturer_Account();
+                userLecturer.setDisplayname(rs.getString("displayname"));
+                userLecturer.setUsername(username);
                 int lid = rs.getInt("lid");
                 if (lid != 0) {
                     Lecturer lecturer = new Lecturer();
                     lecturer.setId(lid);
                     lecturer.setName(rs.getString("lname"));
-                    user.setLecturer(lecturer);
+                    userLecturer.setLecturer(lecturer);
                 }
             }
         } catch (SQLException ex) {
@@ -43,7 +43,7 @@ public class LecturerAccDBContext extends DBContext<Lecturer_Account> {
                 Logger.getLogger(LecturerAccDBContext.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return user;
+        return userLecturer;
     }
 
 }
