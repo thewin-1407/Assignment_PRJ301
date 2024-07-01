@@ -57,7 +57,7 @@ public class GradeDBContext extends DBContext<Grade> {
     }
 
     public void insertGradesForCourse(int cid, ArrayList<Grade> grades) {
-        String sql_remove = "DELETE grades WHERE sid IN (SELECT sid FROM students_courses WHERE cid = ?)";
+        String sql_remove = "DELETE grades WHERE sid IN (SELECT sid FROM courses_students WHERE cid = ?)";
         String sql_insert = """
                             INSERT INTO [grades]
                                        ([eid]

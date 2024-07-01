@@ -15,9 +15,9 @@ public class StudentDBContext extends DBContext<Student> {
         PreparedStatement stm = null;
         try {
             String sql = """
-                         SELECT s.sid,s.sname FROM students s INNER JOIN students_courses sc ON s.sid = sc.sid
-                         \t\t\t\t\t\tINNER JOIN courses c ON c.cid = sc.cid
-                         \t\t\t\t\t\tWHERE c.cid = ?""";
+                         SELECT s.sid,s.sname FROM students s INNER JOIN courses_students cs ON s.sid = cs.sid
+                         INNER JOIN courses c ON c.cid = cs.cid
+                         WHERE c.cid = ?""";
 
             stm = connection.prepareStatement(sql);
             stm.setInt(1, cid);
