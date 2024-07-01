@@ -1,22 +1,21 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Semester {
 
-    private int semId;
+    private int semid;
     private int year;
     private String season;
     private boolean active;
-    private List<Course> courses = new ArrayList<>();
+    private ArrayList<Course> courses = new ArrayList<>();
 
-    public int getSemId() {
-        return semId;
+    public int getSemid() {
+        return semid;
     }
 
-    public void setSemId(int semId) {
-        this.semId = semId;
+    public void setSemid(int semid) {
+        this.semid = semid;
     }
 
     public int getYear() {
@@ -43,11 +42,12 @@ public class Semester {
         this.active = active;
     }
 
-    public List<Course> getCourses() {
+    public ArrayList<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<Course> courses) {
+    public void setCourses(ArrayList<Course> courses) {
         this.courses = courses;
     }
+
 }
