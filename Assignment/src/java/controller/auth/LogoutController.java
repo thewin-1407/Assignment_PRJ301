@@ -26,7 +26,7 @@ public class LogoutController extends HttpServlet {
 
             request.getSession().removeAttribute("user");
             request.setAttribute("message", "Logout successful!");
-            request.getRequestDispatcher("view/auth/logout.jsp").forward(request, response);
+            request.getRequestDispatcher("View/auth/logout.jsp").forward(request, response);
         }
     }
 

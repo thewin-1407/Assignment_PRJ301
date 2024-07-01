@@ -41,7 +41,7 @@ public class TakeExamController extends BaseRequiredLecturerAuthenticationContro
         request.setAttribute("exams", exams);
         request.setAttribute("grades", grades);
 
-        request.getRequestDispatcher("../view/exam/take.jsp").forward(request, response);
+        request.getRequestDispatcher("../View/exam/take.jsp").forward(request, response);
 
     }
 
