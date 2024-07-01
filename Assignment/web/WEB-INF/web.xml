@@ -6,11 +6,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewCourseByLecturerController</servlet-name>
-        <url-pattern>/manager/score/lecturer</url-pattern>
+        <url-pattern>/exam/lecturer</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TakeExamController</servlet-name>
-        <url-pattern>/manager/score/take</url-pattern>
+        <url-pattern>/exam/take</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
