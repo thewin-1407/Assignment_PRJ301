@@ -13,10 +13,11 @@ public class LecturerAccDBContext extends DBContext<Lecturer_Account> {
         Lecturer_Account userLecturer = null;
         try {
             String sql = """
-                         SELECT u.username,u.displayname,l.lid,l.lname
-                         FROM users u LEFT JOIN users_lecturers ul ON ul.username = u.username
-                         \t\t\t\t\t\tLEFT JOIN lecturers l ON ul.lid = l.lid
-                         \t\t\t\t\t\tWHERE u.username = ? AND u.[password] = ?""";
+                         SELECT la.username,la.displayname,l.lid,l.lname
+                            FROM lecturers_account la
+                                LEFT JOIN lecturers_users lu ON lu.username = la.username
+                                LEFT JOIN lecturers l ON lu.lid = l.lid
+                            WHERE la.username = ? AND la.[password] = ?""";
             stm = connection.prepareStatement(sql);
             stm.setString(1, username);
             stm.setString(2, password);
