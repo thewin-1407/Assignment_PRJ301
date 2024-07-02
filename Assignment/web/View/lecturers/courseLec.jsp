@@ -5,21 +5,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lecturer's Courses</title>
-        <style>
-            table {
-                border-collapse: collapse;
-            }
-            table, th, td {
-                border: 1px solid black;
-            }
-            th, td {
-                padding: 10px;
-                text-align: left;
-            }
-            th {
-                background-color: #f2f2f2;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="../CSS/coursesLec.css">
+
     </head>
     <body>
         <h2>Lecturer's Courses</h2>
