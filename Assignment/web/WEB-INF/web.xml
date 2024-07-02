@@ -5,8 +5,8 @@
         <servlet-class>controller.lecturers.ViewMyCourseLecturerController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewClasssLecurerController</servlet-name>
-        <servlet-class>controller.lecturers.ViewClasssLeturerController</servlet-class>
+        <servlet-name>ViewClassLecurerController</servlet-name>
+        <servlet-class>controller.lecturers.ViewClassLecturerController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeStudentController</servlet-name>
@@ -21,7 +21,7 @@
         <url-pattern>/lecturers/mycourses</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ViewClasssLecurerController</servlet-name>
+        <servlet-name>ViewClassLecurerController</servlet-name>
         <url-pattern>/lecturers/viewclass</url-pattern>
     </servlet-mapping>
     <welcome-file-list>

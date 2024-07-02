@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Student Management System</title>
-        <link rel="stylesheet" type="text/css" href="CSS/HomeLecturer.css">
+        <link rel="stylesheet" type="text/css" href="CSS/homeLecturer.css">
         <script src="Script/homeLecturer.js"></script>
     </head>
     <body>
