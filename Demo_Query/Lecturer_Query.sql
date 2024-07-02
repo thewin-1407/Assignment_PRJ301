@@ -64,4 +64,8 @@ JOIN
 WHERE 
     s.sid = ? AND c.cid = ?
 
+GO
+
+-- View Subjects
+SELECT subid, subname FROM subjects;
 
