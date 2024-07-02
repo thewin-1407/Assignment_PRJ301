@@ -4,16 +4,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="CSS/login.css">
     </head>
     <body>
-        <form action="login" method="POST">
-            Username: <input type="text" name="username" required/> <br/><br/>
-            Password: <input type="password" name="password" required/> <br/><br/>
-            <input type="submit" value="Login"/>
-        </form>
-        <br/>
-        <% if (request.getAttribute("errorMessage") != null) { %>
-        <div><%= request.getAttribute("errorMessage") %></div>
-        <% } %>
+        <div class="login-container">
+            <h2>Login</h2>
+            <c:if test="${not empty sessionScope.errorMessage}">
+                <div class="error-message">${sessionScope.errorMessage}</div>
+                <c:remove var="errorMessage" scope="session"/>
+            </c:if>
+            <form action="login" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required/> <br/><br/>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required/> <br/><br/>
+                <input type="submit" value="Login"/>
+            </form>
+        </div>
     </body>
 </html>

@@ -10,6 +10,8 @@ import model.Student_Account;
 
 public abstract class BaseRequiredStudentAuthenticationController extends HttpServlet {
 
+    private static final String LOGIN_PAGE = "/Assignment/login";
+
     private boolean isStuAuthenticated(HttpServletRequest request) {
         Student_Account user = (Student_Account) request.getSession().getAttribute("user");
         if (user == null) {
@@ -23,11 +25,15 @@ public abstract class BaseRequiredStudentAuthenticationController extends HttpSe
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Student_Account user = (Student_Account) request.getSession().getAttribute("user");
         if (isStuAuthenticated(request)) {
+            Student_Account user = (Student_Account) request.getSession().getAttribute("user");
             doGet(request, response, user, user.getStudent());
         } else {
-            response.sendRedirect("login");
+            request.getSession().setAttribute("errorMessage", "You need to login first.");
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Expires", "0");
+            response.sendRedirect(request.getContextPath() + LOGIN_PAGE);
         }
     }
 
@@ -40,17 +46,21 @@ public abstract class BaseRequiredStudentAuthenticationController extends HttpSe
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Student_Account user = (Student_Account) request.getSession().getAttribute("user");
         if (isStuAuthenticated(request)) {
+            Student_Account user = (Student_Account) request.getSession().getAttribute("user");
             doPost(request, response, user, user.getStudent());
         } else {
-            response.sendRedirect("login");
+            request.getSession().setAttribute("errorMessage", "You need to login first.");
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Expires", "0");
+            response.sendRedirect(request.getContextPath() + LOGIN_PAGE);
         }
     }
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Base servlet for student authentication";
     }
 
 }
