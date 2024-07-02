@@ -9,8 +9,13 @@
     <body>
         <div class="login-container">
             <h2>Login</h2>
-            <c:if test="${not empty errorMessage}">
-                <div class="error-message">${errorMessage}</div>
+            <%-- Check if there is an error message in session --%>
+            <c:if test="${not empty sessionScope.errorMessage}">
+                <div class="error-message">${sessionScope.errorMessage}</div>
+                <%-- Clear the error message from session after displaying --%>
+                <%
+                    session.removeAttribute("errorMessage");
+                %>
             </c:if>
             <form action="login" method="POST">
                 <label for="username">Username:</label>
