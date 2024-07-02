@@ -55,3 +55,16 @@ WHERE
     s.sid = ?
     AND su.subid = ?
 
+GO
+
+-- View Student in Courses by Student
+SELECT DISTINCT s.sid, s.sname, c.cname
+FROM students s
+JOIN courses_students cs1 ON s.sid = cs1.sid
+JOIN courses_students cs2 ON cs1.cid = cs2.cid
+JOIN courses c ON c.cid = cs2.cid
+WHERE cs2.cid = ?
+ORDER BY s.sname
+
+GO
+

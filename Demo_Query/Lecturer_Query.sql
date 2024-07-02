@@ -12,12 +12,12 @@ INNER JOIN
 INNER JOIN
     lecturers l ON c.lid = l.lid
 WHERE
-    l.lid = ?
-    AND c.cid = ?
+    l.lid = 1
+    AND c.cid = 1
 
 GO
 
--- 
+-- View Assessment by Subject for Student
 SELECT
     l.lname AS LecturerName,
     sub.subname AS SubjectName,
@@ -37,7 +37,31 @@ INNER JOIN
 INNER JOIN
     exams e ON a.aid = e.aid
 WHERE
-    l.lname = ?
-    AND sub.subname = ?
+    l.lid = 2
+    AND sub.subid = 
+
+GO
+
+-- Grade report of Student by Courses for Lecturer
+SELECT 
+    s.sid, 
+    s.sname, 
+    c.cname, 
+    a.aname, 
+    g.score
+FROM 
+    students s
+JOIN 
+    courses_students cs ON s.sid = cs.sid
+JOIN 
+    courses c ON cs.cid = c.cid
+JOIN 
+    assesments a ON c.subid = a.subid
+JOIN 
+    exams e ON a.aid = e.aid
+JOIN 
+    grades g ON e.eid = g.eid AND s.sid = g.sid
+WHERE 
+    s.sid = ? AND c.cid = ?
 
 
