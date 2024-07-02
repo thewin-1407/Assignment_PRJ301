@@ -27,7 +27,7 @@ public abstract class BaseRequiredStudentAuthenticationController extends HttpSe
         if (isStuAuthenticated(request)) {
             doGet(request, response, user, user.getStudent());
         } else {
-            response.getWriter().println("Access denied!");
+            response.sendRedirect("login");
         }
     }
 
@@ -44,7 +44,7 @@ public abstract class BaseRequiredStudentAuthenticationController extends HttpSe
         if (isStuAuthenticated(request)) {
             doPost(request, response, user, user.getStudent());
         } else {
-            response.getWriter().println("Access denied!");
+            response.sendRedirect("login");
         }
     }
 

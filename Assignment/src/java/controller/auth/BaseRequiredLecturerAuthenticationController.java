@@ -27,7 +27,7 @@ public abstract class BaseRequiredLecturerAuthenticationController extends HttpS
         if (isLecAuthenticated(request)) {
             doGet(request, response, user, user.getLecturer());
         } else {
-            response.getWriter().println("Access denied!");
+            response.sendRedirect("login");
         }
     }
 
@@ -44,7 +44,7 @@ public abstract class BaseRequiredLecturerAuthenticationController extends HttpS
         if (isLecAuthenticated(request)) {
             doPost(request, response, user, user.getLecturer());
         } else {
-            response.getWriter().println("Access denied!");
+            response.sendRedirect("login");
         }
     }
 
