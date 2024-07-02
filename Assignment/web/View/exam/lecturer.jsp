@@ -7,6 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lecturer's course</title>
+        <link rel="stylesheet" type="text/css" href="../CSS/takeExam.css">
     </head>
     <body>
         <c:if test="${requestScope.exams eq null}">
@@ -29,13 +30,12 @@
                 <input type="hidden" name="cid" value="${param.cid}"/>
                 <c:forEach items="${requestScope.exams}" var="e">
                     <input type="checkbox" name="eid" value="${e.id}" /> 
-                    ${e.assessment.name} : <fmt:formatNumber value="${e.assessment.weight * 100}" type="number" maxFractionDigits="0"/>% - (${fn:substring(e.from, 0, 10)} ${fn:substring(e.from, 11, 16)}) <br/>
+                    ${e.assessment.name} : <fmt:formatNumber value="${e.assessment.weight * 100}" type="number" maxFractionDigits="0"/>% (${fn:substring(e.from, 0, 10)} ${fn:substring(e.from, 11, 16)}) <br/>
                 </c:forEach>
                 <br/>
                 <input type="submit" value="Take"/>
             </form>
         </c:if>
-
         <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>
