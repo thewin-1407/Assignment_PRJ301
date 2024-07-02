@@ -7,8 +7,11 @@
         <title>Subject List</title>
         <link rel="stylesheet" type="text/css" href="../CSS/subject.css">
         <script>
-            function goToAssessment(subjectId) {
-                window.location.href = '/assessment?subid=' + subjectId;
+            function goToAssessment(subjectId, event) {
+                var target = event.target || event.srcElement;
+                if (target.cellIndex === 1) {
+                    window.location.href = '/Assignment/subject/assessment?subid=' + subjectId;
+                }
             }
         </script>
     </head>
@@ -24,9 +27,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Sử dụng forEach để lặp qua danh sách subjects -->
                     <c:forEach var="subject" items="${subject}">
-                        <tr onclick="goToAssessment(${subject.id})" style="cursor: pointer;">
+                        <tr onclick="goToAssessment(${subject.id}, event)" style="cursor: pointer;">
                             <td>${subject.id}</td>
                             <td>${subject.name}</td>
                         </tr>

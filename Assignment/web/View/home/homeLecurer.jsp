@@ -36,7 +36,8 @@
             <h2>Welcome to Student Management System</h2>
             <br/>
             <li><a href="http://localhost:1407/Assignment/exam/lecturer">Edit Grade</a></li><br/>
-            <li><a href="http://localhost:1407/Assignment/lecturers/mycourses">My Courses</a></li>
+            <li><a href="http://localhost:1407/Assignment/lecturers/mycourses">My Courses</a></li><br/>
+            <li><a href="http://localhost:1407/Assignment/lecturers/subject">Subject</a></li>
         </div>
 
     </body>
