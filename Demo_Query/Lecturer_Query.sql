@@ -1,5 +1,3 @@
-
--- Grade report of Student by Courses for Lecturer
 SELECT 
     s.sid, 
     s.sname, 
@@ -19,20 +17,5 @@ JOIN
 JOIN 
     grades g ON e.eid = g.eid AND s.sid = g.sid
 WHERE 
-    s.sid = ? AND c.cid = ?
-
-GO
-
--- View Subjects
-SELECT subid, subname FROM subjects
-where subid = 1
-
-GO
-
--- View Assessment
-SELECT a.aname, a.[weight]
-FROM dbo.assesments a
-JOIN dbo.subjects s ON a.subid = s.subid
-WHERE s.subid = ?
-
+    s.sid = 1 AND c.cid = 2
 
