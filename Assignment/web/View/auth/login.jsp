@@ -9,9 +9,8 @@
     <body>
         <div class="login-container">
             <h2>Login</h2>
-            <c:if test="${not empty sessionScope.errorMessage}">
-                <div class="error-message">${sessionScope.errorMessage}</div>
-                <c:remove var="errorMessage" scope="session"/>
+            <c:if test="${not empty errorMessage}">
+                <div class="error-message">${errorMessage}</div>
             </c:if>
             <form action="login" method="POST">
                 <label for="username">Username:</label>
