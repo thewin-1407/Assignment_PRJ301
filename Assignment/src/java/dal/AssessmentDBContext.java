@@ -48,7 +48,7 @@ public class AssessmentDBContext extends DBContext<Assessment> {
         try {
             String sql = """
                          SELECT a.aid, a.aname, a.weight 
-                         FROM assessments a 
+                         FROM assesments a 
                          JOIN courses c ON a.subid = c.subid 
                          WHERE c.cid = ?
                          """;

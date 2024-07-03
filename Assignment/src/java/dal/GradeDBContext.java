@@ -114,12 +114,13 @@ public class GradeDBContext extends DBContext<Grade> {
         PreparedStatement stm = null;
         try {
             String sql = """
-                         SELECT g.eid, g.sid, g.score, e.aid 
-                         FROM grades g 
-                         JOIN exams e ON g.eid = e.eid 
-                         JOIN courses c ON e.cid = c.cid 
-                         WHERE c.cid = ?
-                         """;
+                         SELECT g.eid, g.sid, g.score, e.aid FROM grades g
+                           JOIN exams e ON g.eid = e.eid
+                           JOIN assesments a ON e.aid = a.aid
+                           JOIN subjects s ON a.subid = s.subid
+                           JOIN courses c ON s.subid = c.subid
+                           WHERE c.cid = ?
+                           ORDER BY g.sid""";
             stm = connection.prepareStatement(sql);
             stm.setInt(1, cid);
             ResultSet rs = stm.executeQuery();
