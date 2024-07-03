@@ -105,48 +105,7 @@ public class GradeDBContext extends DBContext<Grade> {
                 Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
 
-    public ArrayList<Grade> getGradesByCourse(int cid) throws SQLException {
-        ArrayList<Grade> grades = new ArrayList<>();
-        PreparedStatement stm = null;
-        try {
-            String sql = """
-                     SELECT g.eid, g.sid, g.score 
-                             FROM grades g 
-                             INNER JOIN exams e ON g.eid = e.eid 
-                             WHERE e.cid = ?""";
-
-            stm = connection.prepareStatement(sql);
-
-            stm.setInt(1, cid);
-
-            ResultSet rs = stm.executeQuery();
-            while (rs.next()) {
-                Grade g = new Grade();
-                g.setScore(rs.getFloat("score"));
-
-                Student s = new Student();
-                s.setId(rs.getInt("sid"));
-                g.setStudent(s);
-
-                Exam e = new Exam();
-                e.setId(rs.getInt("eid"));
-                g.setExam(e);
-
-                grades.add(g);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                stm.close();
-                connection.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return grades;
     }
 
 }

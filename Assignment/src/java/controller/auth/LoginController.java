@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Lecturer_Account;
 import model.Student_Account;
 
@@ -28,7 +29,8 @@ public class LoginController extends HttpServlet {
         Lecturer_Account lecUser = ldb.getLecturerAccount(username, password);
 
         if (lecUser != null) {
-            request.getSession().setAttribute("user", lecUser);
+            HttpSession session = request.getSession();
+            session.setAttribute("user", lecUser);
             response.sendRedirect("HomeLecturer");
             return;
         }
@@ -37,13 +39,16 @@ public class LoginController extends HttpServlet {
         Student_Account stuUser = sdb.getStudentAccount(username, password);
 
         if (stuUser != null) {
-            request.getSession().setAttribute("user", stuUser);
+            HttpSession session = request.getSession();
+            session.setAttribute("user", stuUser);
             response.sendRedirect("HomeStudent");
             return;
         }
 
-        request.setAttribute("errorMessage", "Invalid username or password");
-        request.getRequestDispatcher("View/auth/login.jsp").forward(request, response);
+        // If login fails for both lecturer and student, show error message
+        HttpSession session = request.getSession();
+        session.setAttribute("errorMessage", "Invalid username or password");
+        response.sendRedirect("login"); // Redirect back to login page
     }
 
     @Override

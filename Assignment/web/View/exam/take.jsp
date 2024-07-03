@@ -8,7 +8,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Score Editing</title>
         <link rel="stylesheet" type="text/css" href="../CSS/editScore.css">
+<<<<<<< HEAD
 
+=======
+        <script src="Script/validateScore.js"></script>
+>>>>>>> parent of 9b4493b (Revert "Update Lecturer_Query.sql")
     </head>
     <body>
         <form action="take" method="POST">

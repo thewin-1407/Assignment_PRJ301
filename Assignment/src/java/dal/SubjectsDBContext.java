@@ -28,7 +28,7 @@ public class SubjectsDBContext extends DBContext<Subject> {
 
         } catch (SQLException ex) {
             Logger.getLogger(SubjectsDBContext.class.getName()).log(Level.SEVERE, "Error fetching subjects", ex);
-            throw ex;
+            throw ex; 
         } finally {
             if (rs != null) {
                 try {
