@@ -16,7 +16,7 @@ public class ViewMyCourseStudentController extends BaseRequiredStudentAuthentica
     protected void processRequest(HttpServletRequest request, HttpServletResponse response, Student_Account user, Student student)
             throws ServletException, IOException {
         CourseDBContext db = new CourseDBContext();
-        int sid = Integer.parseInt(request.getParameter("sid"));
+        int sid = student.getId();
         ArrayList<Course> courses = db.getCoursesByStudent(sid);
         request.setAttribute("courses", courses);
         request.getRequestDispatcher("../View/students/courseStu.jsp").forward(request, response);

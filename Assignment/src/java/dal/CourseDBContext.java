@@ -46,8 +46,7 @@ public class CourseDBContext extends DBContext<Course> {
             String sql = """
                          SELECT
                               c.cid,
-                              c.cname,
-                              s.sid
+                              c.cname
                           FROM
                               courses c
                           INNER JOIN
@@ -64,8 +63,8 @@ public class CourseDBContext extends DBContext<Course> {
                 Course c = new Course();
                 c.setId(rs.getInt("cid"));
                 c.setName(rs.getString("cname"));
-
                 courses.add(c);
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(CourseDBContext.class.getName()).log(Level.SEVERE, null, ex);
