@@ -4,11 +4,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Exam;
 import model.Grade;
 import model.Student;
+import model.Assessment;
 
 public class GradeDBContext extends DBContext<Grade> {
 
@@ -105,7 +107,55 @@ public class GradeDBContext extends DBContext<Grade> {
                 Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
 
+    public HashMap<Integer, HashMap<Integer, Grade>> getGradesByCourseId(int cid) {
+        HashMap<Integer, HashMap<Integer, Grade>> grades = new HashMap<>();
+        PreparedStatement stm = null;
+        try {
+            String sql = """
+                         SELECT g.eid, g.sid, g.score, e.aid 
+                         FROM grades g 
+                         JOIN exams e ON g.eid = e.eid 
+                         JOIN courses c ON e.cid = c.cid 
+                         WHERE c.cid = ?
+                         """;
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, cid);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                int sid = rs.getInt("sid");
+                int aid = rs.getInt("aid");
+                Grade grade = new Grade();
+                grade.setScore(rs.getFloat("score"));
+
+                Student student = new Student();
+                student.setId(sid);
+                grade.setStudent(student);
+
+                Exam exam = new Exam();
+                exam.setId(rs.getInt("eid"));
+                Assessment assessment = new Assessment();
+                assessment.setId(aid);
+                exam.setAssessment(assessment);
+                grade.setExam(exam);
+
+                if (!grades.containsKey(sid)) {
+                    grades.put(sid, new HashMap<>());
+                }
+                grades.get(sid).put(aid, grade);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                stm.close();
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return grades;
     }
 
 }
