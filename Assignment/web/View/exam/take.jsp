@@ -45,7 +45,8 @@
             <input type="hidden" name="cid" value="${param.cid}" />
             <input type="submit" value="Save"/>
         </form>
-
+        <br/>
+        <a href="http://localhost:1407/Assignment/HomeLecturer">Home</a> <br/><br/>
         <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>

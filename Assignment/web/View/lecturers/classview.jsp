@@ -25,5 +25,9 @@
                 </c:forEach>
             </tbody>
         </table>
+        <br/>
+        <a href="mycourses">Back to Courses</a> <br/><br/>
+        <a href="http://localhost:1407/Assignment/HomeLecturer">Home</a> <br/><br/>
+        <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>

@@ -36,5 +36,8 @@
                 </tbody>
             </table>
         </div>
+        <br/>
+        <a href="http://localhost:1407/Assignment/HomeLecturer">Home</a> <br/><br/>
+        <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>
