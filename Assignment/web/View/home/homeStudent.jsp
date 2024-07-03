@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Student Management System</title>
         <link rel="stylesheet" type="text/css" href="CSS/homeStudent.css">
-        <script src="Script/homeLecturer.js"></script>
+        <script src="JavaScript/home.js"></script>
     </head>
     <body>
         <header>
@@ -24,15 +24,14 @@
                             </ul>
                         </li>
                     </c:when>
-                    <c:otherwise>
-                        <a href="http://localhost:1407/Assignment/login">Login</a>
-                    </c:otherwise>
                 </c:choose>
             </ul>
         </div>
 
         <div class="content">
             <h2>Welcome Student!</h2>
+            <br/>
+            <li><a href="http://localhost:1407/Assignment/students/subject">Subject</a></li>
         </div>
 
     </body>

@@ -6,14 +6,7 @@
         <meta charset="UTF-8">
         <title>Subject List</title>
         <link rel="stylesheet" type="text/css" href="../CSS/subject.css">
-        <script>
-            function goToAssessment(subjectId, event) {
-                var target = event.target || event.srcElement;
-                if (target.cellIndex === 1) {
-                    window.location.href = '/Assignment/subject/assessment?subid=' + subjectId;
-                }
-            }
-        </script>
+        <script src="../JavaScript/viewAssesments.js"></script> 
     </head>
     <body>
         <div class="container">
@@ -28,16 +21,16 @@
                 </thead>
                 <tbody>
                     <c:forEach var="subject" items="${subject}">
-                        <tr onclick="goToAssessment(${subject.id}, event)" style="cursor: pointer;">
+                        <tr style="cursor: pointer;">
                             <td>${subject.id}</td>
-                            <td>${subject.name}</td>
+                            <td onclick="goToAssessment(${subject.id}, event)">${subject.name}</td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
         </div>
         <br/>
-        <a href="http://localhost:1407/Assignment/HomeLecturer">Home</a> <br/><br/>
+        <a href="#" onclick="navigateHomeofSubject()">Home</a> <br/><br/>
         <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>

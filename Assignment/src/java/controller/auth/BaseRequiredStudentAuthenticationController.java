@@ -10,7 +10,7 @@ import model.Student_Account;
 
 public abstract class BaseRequiredStudentAuthenticationController extends HttpServlet {
 
-    private static final String LOGIN_PAGE = "/Assignment/login";
+    private static final String LOGIN_PAGE = "/login";
 
     private boolean isStuAuthenticated(HttpServletRequest request) {
         Student_Account user = (Student_Account) request.getSession().getAttribute("user");
