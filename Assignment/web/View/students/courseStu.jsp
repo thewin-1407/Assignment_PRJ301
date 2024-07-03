@@ -5,24 +5,25 @@
     <head>
         <meta charset="UTF-8">
         <title>Student Courses</title>
+        <link rel="stylesheet" type="text/css" href="../CSS/coursesStu.css">
     </head>
     <body>
         <h2>My Courses</h2>
-        <table border="1">
+        <table>
             <thead>
                 <tr>
-                    <th>Course ID</th>
                     <th>Course Name</th>
                 </tr>
             </thead>
             <tbody>
-            <c:forEach var="course" items="${courses}">
-                <tr>
-                    <td>${course.id}</td>
-                    <td>${course.name}</td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-</body>
+                <c:forEach var="course" items="${courses}">
+                    <tr>
+                        <td><a href="viewclass?cid=${course.id}">${course.name}</a></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+        <br/>
+        <a href="http://localhost:1407/Assignment/HomeStudent">Home</a>
+    </body>
 </html>

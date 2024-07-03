@@ -1,15 +1,21 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Class View</title>
-        <link rel="stylesheet" type="text/css" href="CSS/viewclassLec.css">
+        <meta charset="UTF-8">
+        <title>Class Details</title>
+        <link rel="stylesheet" type="text/css" href="../CSS/viewclassStu.css">
     </head>
     <body>
-        <h2>Class Student List</h2>
-        <table border="1">
+        <h2>Class Details</h2>
+
+        <h3 class="lecturer-name">Lecturer:</h3>
+        <div class="lecturer-name">${lecturer.name}</div>
+
+        <h3>Students:</h3>
+        <table>
             <thead>
                 <tr>
                     <th>Student ID</th>
@@ -27,7 +33,7 @@
         </table>
         <br/>
         <a href="mycourses">Back to Courses</a> <br/><br/>
-        <a href="http://localhost:1407/Assignment/HomeLecturer">Home</a> <br/><br/>
+        <a href="http://localhost:1407/Assignment/HomeStudent">Home</a> <br/><br/>
         <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>

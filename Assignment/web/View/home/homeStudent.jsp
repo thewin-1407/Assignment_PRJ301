@@ -31,7 +31,8 @@
         <div class="content">
             <h2>Welcome Student!</h2>
             <br/>
-            <li><a href="http://localhost:1407/Assignment/students/subject">Subject</a></li>
+            <li><a href="http://localhost:1407/Assignment/students/subject">Subject</a></li> <br/><br/>
+            <li><a href="http://localhost:1407/Assignment/students/mycourses">My Courses</a></li>
         </div>
 
     </body>
