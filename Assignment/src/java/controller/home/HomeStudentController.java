@@ -12,7 +12,7 @@ public class HomeStudentController extends BaseRequiredStudentAuthenticationCont
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("View/home/homeLecurer.jsp").forward(request, response);
+        request.getRequestDispatcher("View/home/homeStudent.jsp").forward(request, response);
     }
 
     @Override
