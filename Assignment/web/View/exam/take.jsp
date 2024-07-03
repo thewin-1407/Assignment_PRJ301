@@ -7,6 +7,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Score Editing</title>
+<<<<<<< HEAD
+=======
+        <link rel="stylesheet" type="text/css" href="../CSS/editScore.css">
+>>>>>>> parent of 214357c (Update Login)
     </head>
     <body>
         <form action="take" method="POST">
