@@ -16,6 +16,10 @@
         <servlet-name>ViewAssessmentController</servlet-name>
         <servlet-class>controller.lecturers.ViewAssessmentController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GradeListLecturerController</servlet-name>
+        <servlet-class>controller.lecturers.GradeListLecturerController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeStudentController</servlet-name>
         <url-pattern>/HomeStudent</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ViewAssessmentController</servlet-name>
         <url-pattern>/subject/assessment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GradeListLecturerController</servlet-name>
+        <url-pattern>/lecturers/grade</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>View/auth/login.jsp</welcome-file>

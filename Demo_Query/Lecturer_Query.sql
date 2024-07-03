@@ -19,25 +19,3 @@ JOIN
 WHERE 
     s.sid = 1 AND c.cid = 2
 
-GO
-
--- Grade Report
-SELECT 
-    s.sid,
-    s.sname,
-    a.aname,
-    g.score
-FROM 
-    grades g
-JOIN 
-    exams e ON g.eid = e.eid
-JOIN 
-    assesments a ON e.aid = a.aid
-JOIN 
-    courses_students cs ON g.sid = cs.sid
-JOIN 
-    students s ON g.sid = s.sid
-WHERE 
-    cs.cid = ?
-ORDER BY 
-    s.sid, a.aid
