@@ -45,10 +45,9 @@ public class LoginController extends HttpServlet {
             return;
         }
 
-        // If login fails for both lecturer and student, show error message
         HttpSession session = request.getSession();
         session.setAttribute("errorMessage", "Invalid username or password");
-        response.sendRedirect("login"); // Redirect back to login page
+        response.sendRedirect("login");
     }
 
     @Override

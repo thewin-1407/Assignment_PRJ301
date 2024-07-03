@@ -1,40 +1,3 @@
--- View Courses for Student
-SELECT
-    s.sid AS StudentID,
-    s.sname AS StudentName,
-    c.cname AS CourseName,
-    l.lname AS LecturerName
-FROM
-    students s
-INNER JOIN
-    courses_students cs ON s.sid = cs.sid
-INNER JOIN
-    courses c ON cs.cid = c.cid
-INNER JOIN
-    lecturers l ON c.lid = l.lid
-WHERE
-    s.sid = ?
-
-GO
-
--- View Subject by Courses for Student
-SELECT
-    s.sname AS StudentName,
-    su.subid AS SubjectID,
-    su.subname AS SubjectName
-FROM
-    students s
-INNER JOIN
-    courses_students cs ON s.sid = cs.sid
-INNER JOIN
-    courses c ON cs.cid = c.cid
-INNER JOIN
-    subjects su ON c.subid = su.subid
-WHERE
-    s.sid = ?
-
-GO
-
 -- View Grade by Subject for Student
 SELECT
     s.sname AS StudentName,
@@ -60,11 +23,28 @@ GO
 -- View Student in Courses by Student
 SELECT DISTINCT s.sid, s.sname, c.cname
 FROM students s
-JOIN courses_students cs1 ON s.sid = cs1.sid
-JOIN courses_students cs2 ON cs1.cid = cs2.cid
-JOIN courses c ON c.cid = cs2.cid
-WHERE cs2.cid = ?
-ORDER BY s.sname
+JOIN courses_students cs ON s.sid = cs.sid
+JOIN courses c ON c.cid = cs.cid
+WHERE c.cid = ?
+
+GO
+
+-- View Courses by Student ID
+SELECT
+    c.cname,
+    l.lname,
+	s.sname
+FROM
+    courses c
+INNER JOIN
+    lecturers l ON c.lid = l.lid
+INNER JOIN
+    courses_students cs ON c.cid = cs.cid
+INNER JOIN
+    students s ON cs.sid = s.sid
+WHERE
+    s.sid = 1
+
 
 GO
 

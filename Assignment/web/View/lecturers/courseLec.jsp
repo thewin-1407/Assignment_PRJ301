@@ -14,7 +14,7 @@
                 <thead>
                     <tr>
                         <th>Course Name</th>
-                        <th>Actions</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
