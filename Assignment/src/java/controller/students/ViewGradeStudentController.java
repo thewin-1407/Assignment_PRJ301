@@ -19,7 +19,7 @@ public class ViewGradeStudentController extends BaseRequiredStudentAuthenticatio
         int subid = Integer.parseInt(request.getParameter("subid"));
 
         GradeDBContext db = new GradeDBContext();
-        ArrayList<Grade> grades = db.getGradeByStuID_SubID(sid, subid);
+        ArrayList<Grade> grades = db.getGradesByStudentAndSubject(sid, subid);
         request.setAttribute("grades", grades);
         request.getRequestDispatcher("../View/students/report.jsp").forward(request, response);
     }
