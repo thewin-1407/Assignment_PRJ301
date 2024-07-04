@@ -28,7 +28,7 @@ public class SubjectsDBContext extends DBContext<Subject> {
 
         } catch (SQLException ex) {
             Logger.getLogger(SubjectsDBContext.class.getName()).log(Level.SEVERE, "Error fetching subjects", ex);
-            throw ex; 
+            throw ex;
         } finally {
             if (rs != null) {
                 try {
@@ -47,4 +47,39 @@ public class SubjectsDBContext extends DBContext<Subject> {
         }
         return subjects;
     }
+
+    public ArrayList<Subject> getSubjectbyStudentID(int sid) throws SQLException {
+        ArrayList<Subject> subjects = new ArrayList<>();
+        PreparedStatement stm = null;
+        try {
+            String sql = """
+                         SELECT  sb.subid, sb.subname
+                         FROM students s
+                         JOIN courses_students cs ON s.sid = cs.sid
+                         JOIN courses c ON cs.cid = c.cid
+                         JOIN subjects sb ON c.subid = sb.subid
+                         WHERE s.sid = ?""";
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, sid);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Subject sub = new Subject();
+                sub.setId(rs.getInt("subid"));
+                sub.setName(rs.getString("subname"));
+                subjects.add(sub);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SubjectsDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                stm.close();
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SubjectsDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return subjects;
+    }
+
 }
