@@ -11,7 +11,7 @@
     <body>
         <h2>Class Details</h2>
 
-        <h3 class="lecturer">Lecturer:</h3>
+        <h3 class="lecturer-name">Lecturer:</h3>
         <div class="lecturer-name">${lecturer.name}</div>
 
         <h3>Students:</h3>

@@ -164,15 +164,16 @@ public class GradeDBContext extends DBContext<Grade> {
         PreparedStatement stm = null;
         try {
             String sql = """
-                 SELECT a.aname, a.weight, g.score FROM grades g
-                 JOIN exams e ON g.eid = e.eid
-                 JOIN assesments a ON e.aid = a.aid
-                 JOIN subjects s ON a.subid = s.subid
-                 JOIN students stu ON stu.sid = g.sid
-                 WHERE stu.sid = ?
-                 AND s.subid = ?
-                 """;
+             SELECT a.aname, a.weight, g.score FROM grades g
+             JOIN exams e ON g.eid = e.eid
+             JOIN assesments a ON e.aid = a.aid
+             JOIN subjects s ON a.subid = s.subid
+             JOIN students stu ON stu.sid = g.sid
+             WHERE stu.sid = ?
+             AND s.subid = ?
+             """;
 
+            stm = connection.prepareStatement(sql);
             stm.setInt(1, sid);
             stm.setInt(2, subid);
 
@@ -198,6 +199,13 @@ public class GradeDBContext extends DBContext<Grade> {
 
         } catch (SQLException ex) {
             Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                stm.close();
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return grades;
     }
