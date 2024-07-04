@@ -1,7 +1,5 @@
 -- View Grade by sid & subid
 SELECT 
-    s.sname,
-    sb.subname, 
     a.aname, 
 	a.weight,
     g.score
@@ -16,9 +14,9 @@ JOIN
 JOIN 
     subjects sb ON a.subid = sb.subid
 WHERE 
-    g.sid = ?
+    g.sid = 1
 AND 
-    sb.subid = ?
+    sb.subid = 1
 
 GO
 

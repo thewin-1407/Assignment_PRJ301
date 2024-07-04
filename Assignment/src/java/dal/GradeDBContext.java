@@ -159,4 +159,62 @@ public class GradeDBContext extends DBContext<Grade> {
         return grades;
     }
 
+    public ArrayList<Grade> getGradeByStuID_SubID(int sid, int subid) {
+        ArrayList<Grade> grades = new ArrayList<>();
+        PreparedStatement stm = null;
+        try {
+            String sql = """
+                         SELECT
+                             a.aname,
+                             a.weight,
+                             g.score
+                         FROM
+                             grades g
+                         JOIN
+                             students s ON g.sid = s.sid
+                         JOIN
+                             exams e ON g.eid = e.eid
+                         JOIN
+                             assesments a ON e.aid = a.aid
+                         JOIN
+                             subjects sb ON a.subid = sb.subid
+                         WHERE
+                             g.sid = ?
+                         AND
+                             sb.subid = ?""";
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, sid);
+            stm.setInt(2, subid);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Grade grade = new Grade();
+                grade.setScore(rs.getFloat("score"));
+
+                Student student = new Student();
+                student.setId(sid);
+                grade.setStudent(student);
+
+                Assessment assessment = new Assessment();
+                assessment.setName(rs.getString("aname"));
+                assessment.setWeight(rs.getFloat("weight"));
+
+                Exam exam = new Exam();
+                exam.setAssessment(assessment);
+                grade.setExam(exam);
+
+                grades.add(grade);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                stm.close();
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return grades;
+    }
+
 }
