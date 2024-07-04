@@ -164,7 +164,7 @@ public class GradeDBContext extends DBContext<Grade> {
         PreparedStatement stm = null;
         try {
             String sql = """
-             SELECT a.aname, a.weight, g.score FROM grades g
+             SELECT a.aid, g.score FROM grades g
              JOIN exams e ON g.eid = e.eid
              JOIN assesments a ON e.aid = a.aid
              JOIN subjects s ON a.subid = s.subid
@@ -183,8 +183,7 @@ public class GradeDBContext extends DBContext<Grade> {
                 grade.setScore(rs.getFloat("score"));
 
                 Assessment assessment = new Assessment();
-                assessment.setName(rs.getString("aname"));
-                assessment.setWeight(rs.getFloat("weight"));
+                assessment.setId(rs.getInt("aid"));
 
                 Exam exam = new Exam();
                 exam.setAssessment(assessment);

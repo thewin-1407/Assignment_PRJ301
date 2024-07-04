@@ -15,15 +15,16 @@ public class AssessmentDBContext extends DBContext<Assessment> {
         PreparedStatement stm = null;
         try {
             String sql = """
-                                 SELECT a.aname, a.[weight]
-                                 FROM dbo.assesments a
-                                 JOIN dbo.subjects s ON a.subid = s.subid
-                                 WHERE s.subid = ?""";
+                            SELECT a.aid, a.aname, a.[weight]
+                            FROM dbo.assesments a
+                            JOIN dbo.subjects s ON a.subid = s.subid
+                            WHERE s.subid = ?""";
             stm = connection.prepareStatement(sql);
             stm.setInt(1, subid);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 Assessment a = new Assessment();
+                a.setId(rs.getInt("aid"));
                 a.setName(rs.getString("aname"));
                 a.setWeight(rs.getFloat("weight"));
                 assesments.add(a);
