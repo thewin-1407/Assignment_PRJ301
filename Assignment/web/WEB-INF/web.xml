@@ -42,7 +42,7 @@
     </servlet>
     <servlet>
         <servlet-name>ViewGradeStudentController</servlet-name>
-        <servlet-class>controller.students.ViewGradeStudentController</servlet-class>
+        <servlet-class>controller.students.GradeReportStudentController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeStudentController</servlet-name>

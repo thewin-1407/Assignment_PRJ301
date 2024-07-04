@@ -101,5 +101,5 @@ public class ExamDBContext extends DBContext<Exam> {
         }
         return exams;
     }
-
+    
 }

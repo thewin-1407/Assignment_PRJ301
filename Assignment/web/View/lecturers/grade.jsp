@@ -6,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Grade Report</title>
+        <link rel="stylesheet" type="text/css" href="../CSS/gradeLec.css">
     </head>
     <body>
         <h1>Grade Report</h1>
