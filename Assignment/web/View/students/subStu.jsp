@@ -26,5 +26,8 @@
                 <li data-subid="${sub.id}">${sub.name}</li>
                 </c:forEach>
         </ul>
+
+        <br><br/>     
+        <a href="http://localhost:1407/Assignment/HomeStudent">Home</a>
     </body>
 </html>
