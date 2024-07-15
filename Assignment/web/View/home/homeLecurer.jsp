@@ -13,7 +13,9 @@
             <h1>Student Management System</h1>
         </header>
 
-        <div>
+        <div class="content">
+            <h2 >Welcome Lecturer!</h2>
+
             <ul>
                 <c:choose>
                     <c:when test="${sessionScope.user ne null}">
@@ -28,7 +30,6 @@
             </ul>
         </div>
 
-        <h2 class="content">Welcome Lecturer!</h2>
 
         <div>
             <li><a href="http://localhost:1407/Assignment/exam/lecturer">Edit Grade</a></li>
