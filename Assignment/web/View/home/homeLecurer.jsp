@@ -20,7 +20,7 @@
                         <li class="dropdown" onclick="toggleDropdown(this)">
                             <a href="#">${sessionScope.user.username}</a>
                             <ul id="dropdownContent" class="dropdown-content">
-                                <li><a href="http://localhost:1407/Assignment/logout">Logout</a></li>
+                                <a href="http://localhost:1407/Assignment/logout">Logout</a>
                             </ul>
                         </li>
                     </c:when>
