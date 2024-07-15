@@ -1,75 +1,88 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.home {
+    padding: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.content li {
+    list-style-type: none;
+    width: 30%;
+}
+
+.content li a {
+    display: block;
+    background-color: #f1f1f1;
     padding: 10px;
     text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    color: #fff;
     text-decoration: none;
+    color: black;
+    margin-bottom: 20px;
+    border-radius: 4px;
 }
 
-nav ul li a:hover {
-    text-decoration: underline;
+.content li a:hover {
+    background-color: #ddd;
+}
+
+ul {
+    padding: 0;
 }
 
 .dropdown {
     position: relative;
     display: inline-block;
+    float: right;
+}
+
+.dropdown a {
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    color: #333;
+    background-color: #f1f1f1;
+    border-radius: 4px;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
+    right: 0;
+    background-color: #f1f1f1;
+    min-width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border-radius: 4px;
 }
 
 .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 10px;
     text-decoration: none;
     display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: #ddd;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-.content {
-    background-color: #fff;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
