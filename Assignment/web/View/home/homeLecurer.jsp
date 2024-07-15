@@ -14,7 +14,7 @@
         </header>
 
         <div class="content">
-            <h2 >Welcome Lecturer!</h2>
+            <h2 >Welcome Lecturer!</h2> <br/>
 
             <ul>
                 <c:choose>
@@ -22,7 +22,7 @@
                         <li class="dropdown" onclick="toggleDropdown(this)">
                             <a href="#">${sessionScope.user.username}</a>
                             <ul id="dropdownContent" class="dropdown-content">
-                                <li><a href="http://localhost:1407/Assignment/logout">Logout</a></li>
+                                <a href="http://localhost:1407/Assignment/logout">Logout</a>
                             </ul>
                         </li>
                     </c:when>
@@ -30,10 +30,9 @@
             </ul>
         </div>
 
-
-        <div>
-            <li><a href="http://localhost:1407/Assignment/exam/lecturer">Edit Grade</a></li>
-            <li><a href="http://localhost:1407/Assignment/lecturers/mycourses">My Courses</a></li>
+        <div class="content">
+            <li><a href="http://localhost:1407/Assignment/exam/lecturer">Edit Grade</a></li> <br/><br/>
+            <li><a href="http://localhost:1407/Assignment/lecturers/mycourses">My Courses</a></li> <br/><br/>
             <li><a href="http://localhost:1407/Assignment/lecturers/subject">Subject</a></li>
         </div>
 
