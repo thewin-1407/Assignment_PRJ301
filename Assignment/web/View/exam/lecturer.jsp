@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="../CSS/examCourses.css">
     </head>
     <body>
+        <a href="http://localhost:1407/Assignment/HomeLecturer">Home</a> <br/><br/>
         <c:if test="${requestScope.exams eq null}">
             <c:if test="${requestScope.courses.size() > 0}">
                 <form action="lecturer" method="POST">
@@ -40,8 +41,5 @@
                 <input type="submit" value="Take"/>
             </form>
         </c:if>
-        <br/>
-        <a href="http://localhost:1407/Assignment/HomeLecturer">Home</a> <br/><br/>
-        <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>
