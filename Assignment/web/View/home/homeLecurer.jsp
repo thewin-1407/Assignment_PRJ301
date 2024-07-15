@@ -27,13 +27,12 @@
                 </c:choose>
             </ul>
         </div>
-
-        <div class="content">
-
-            <h2>Welcome Lecturer!</h2>
-            <br/>
-            <a href="http://localhost:1407/Assignment/exam/lecturer">Edit Grade</a> <br/>
-            <a href="http://localhost:1407/Assignment/lecturers/mycourses">My Courses</a> <br/>
+        
+        <h2 class="content">Welcome Lecturer!</h2>
+        
+        <div >
+            <a href="http://localhost:1407/Assignment/exam/lecturer">Edit Grade</a>
+            <a href="http://localhost:1407/Assignment/lecturers/mycourses">My Courses</a>
             <a href="http://localhost:1407/Assignment/lecturers/subject">Subject</a>
         </div>
 
