@@ -32,9 +32,9 @@
 
             <h2>Welcome Lecturer!</h2>
             <br/>
-            <li><a href="http://localhost:1407/Assignment/exam/lecturer">Edit Grade</a></li><br/>
-            <li><a href="http://localhost:1407/Assignment/lecturers/mycourses">My Courses</a></li><br/>
-            <li><a href="http://localhost:1407/Assignment/lecturers/subject">Subject</a></li>
+            <a href="http://localhost:1407/Assignment/exam/lecturer">Edit Grade</a> <br/>
+            <a href="http://localhost:1407/Assignment/lecturers/mycourses">My Courses</a> <br/>
+            <a href="http://localhost:1407/Assignment/lecturers/subject">Subject</a>
         </div>
 
     </body>
