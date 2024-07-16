@@ -5,11 +5,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Class View</title>
-        <link rel="stylesheet" type="text/css" href="CSS/viewclassLec.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/viewclassLec.css">
     </head>
     <body>
+        <div class="header">
+            <div>
+                <a href="http://localhost:1407/Assignment/HomeLecturer" class="home-link">Home</a>
+            </div>
+        </div>
+
         <h2>Class Student List</h2>
-        <table border="1">
+
+        <br/>
+        <a href="mycourses" class="back">Back to Courses</a> <br/>
+
+        <table>
             <thead>
                 <tr>
                     <th>Student ID</th>
@@ -26,8 +36,5 @@
             </tbody>
         </table>
         <br/>
-        <a href="mycourses">Back to Courses</a> <br/><br/>
-        <a href="http://localhost:1407/Assignment/HomeLecturer">Home</a> <br/><br/>
-        <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>

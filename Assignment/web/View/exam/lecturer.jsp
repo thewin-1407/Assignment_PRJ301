@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <h1>Grading Editor</h1>
+        <h2>Grading Editor</h2>
 
         <div class="container">
             <c:choose>

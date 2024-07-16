@@ -7,10 +7,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Grade Report</title>
         <link rel="stylesheet" type="text/css" href="../CSS/gradeLec.css">
+
     </head>
     <body>
-        <h1>Grade Report</h1>
-        <table border="1">
+        <div class="header">
+            <div>
+                <a href="http://localhost:1407/Assignment/HomeLecturer" class="home-link">Home</a>
+            </div>
+        </div>
+
+        <h2>Grade Report</h2>
+
+        <br/>
+        <a href="mycourses" class="back">Back to Courses</a> <br/>
+        <table>
             <thead>
                 <tr>
                     <th>Student ID</th>
@@ -41,7 +51,6 @@
                                         <c:set var="total" value="${total + grade.score * assessment.weight}" />
                                     </c:when>
                                     <c:otherwise>
-
                                         <c:set var="allGradesPresent" value="false" />
                                     </c:otherwise>
                                 </c:choose>
@@ -50,7 +59,7 @@
                         <td>
                             <fmt:formatNumber value="${total}" type="number" maxFractionDigits="2" />
                         </td>
-                        <td>
+                        <td class="${allGradesPresent ? (total >= 5 ? 'pass' : 'not-pass') : 'studying'}">
                             <c:choose>
                                 <c:when test="${allGradesPresent}">
                                     <c:choose>
@@ -71,9 +80,5 @@
                 </c:forEach>
             </tbody>
         </table>
-        <br/>
-        <a href="mycourses">Back to Courses</a> <br/><br/>
-        <a href="http://localhost:1407/Assignment/HomeLecturer">Home</a> <br/><br/>
-        <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>

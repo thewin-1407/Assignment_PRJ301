@@ -1,14 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: rgb(33, 33, 33);
+    color: white;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: rgb(33, 33, 33);
+    padding: 10px;
+}
+.home-link {
+    padding: 10px 20px;
+    background-color: rgb(128, 128, 128);
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.home-link:hover {
+    background-color: #D4D4D4;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.back{
+    text-decoration: underline;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
-table, th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
 th {
+    background-color: rgb(128, 128, 128);
+    color: white;
+}
+
+td {
     background-color: #f2f2f2;
+    color: black;
+}
+
+.pass {
+    color: green;
+    font-weight: bold;
+}
+
+.not-pass {
+    color: red;
+    font-weight: bold;
+}
+
+.studying {
+    color: blue;
+    font-weight: bold;
 }
