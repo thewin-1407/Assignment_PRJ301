@@ -12,6 +12,7 @@
         <header>
             <h1>Student Management System</h1>
         </header>
+
         <div class="header-content">
             <h2>Welcome Lecturer!</h2>
             <div class="user-box" onclick="toggleLogoutButton()" aria-label="User menu">
@@ -21,6 +22,7 @@
                 </div>
             </div>
         </div>
+
         <div class="content">
             <div class="box" onclick="redirectTo('http://localhost:1407/Assignment/students/mycourses')" aria-label="My Courses">My Courses</div>
             <div class="box" onclick="redirectTo('http://localhost:1407/Assignment/students/grade')" aria-label="Grade Report">Grade Report</div>
