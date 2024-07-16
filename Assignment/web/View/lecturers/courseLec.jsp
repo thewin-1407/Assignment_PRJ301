@@ -6,9 +6,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lecturer's Courses</title>
         <link rel="stylesheet" type="text/css" href="../CSS/coursesLec.css">
+
     </head>
     <body>
+        <div class="header">
+            <div>
+                <a href="http://localhost:1407/Assignment/HomeLecturer" class="home-link">Home</a>
+            </div>
+        </div>
+
         <h2>Lecturer's Courses</h2>
+
         <c:if test="${not empty requestScope.courses}">
             <table>
                 <thead>
@@ -28,10 +36,7 @@
             </table>
         </c:if>
         <c:if test="${empty requestScope.courses}">
-            <p>No courses available.</p>
+            <p class="empty-message">No courses available.</p>
         </c:if>
-        <br/>
-        <a href="http://localhost:1407/Assignment/HomeLecturer">Home</a> <br/><br/>
-        <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>
