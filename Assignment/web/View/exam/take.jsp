@@ -7,20 +7,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Score Editing</title>
-        <link rel="stylesheet" type="text/css" href="../CSS/editScore.css">
-        <script src="Script/validateScore.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="../CSS/takeGrade.css">
     </head>
     <body>
-        <a href="http://localhost:1407/Assignment/HomeLecturer">Home</a> <br/><br/>
+        <div class="header">
+            <div>
+                <a href="http://localhost:1407/Assignment/HomeLecturer" class="home-link">Home</a>
+            </div>
+        </div>
+
+        <h1>Grading Editor</h1>
+
         <form action="take" method="POST">
             <table border="1px">
                 <tr>
                     <td></td>
                     <c:forEach items="${requestScope.exams}" var="e">
                         <td>
-                            ${e.assessment.name} (<fmt:formatNumber value="${e.assessment.weight * 100}" type="number" maxFractionDigits="0"/>%) <br/>
-                            ${fn:substring(e.from, 0, 16)}
+                            ${e.assessment.name} <br/> (<fmt:formatNumber value="${e.assessment.weight * 100}" type="number" maxFractionDigits="0"/>%)
+                            
                         </td>
                     </c:forEach>
                 </tr>
