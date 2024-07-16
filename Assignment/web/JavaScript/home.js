@@ -1,4 +1,8 @@
-function toggleDropdown(element) {
-    var dropdownContent = element.querySelector('.dropdown-content');
-    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+function toggleLogoutButton() {
+    const logoutButton = document.getElementById("logoutButton");
+    logoutButton.style.display = logoutButton.style.display === "none" ? "block" : "none";
+}
+
+function redirectTo(url) {
+    window.location.href = url;
 }
