@@ -7,59 +7,7 @@
         <meta charset="UTF-8">
         <title>View Assessments</title>
         <script src="../JavaScript/viewAssesments.js"></script> 
-        <!--<link rel="stylesheet" type="text/css" href="../CSS/assesment.css">-->
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 20px;
-                background-color: rgb(33, 33, 33);
-                color: white;
-            }
-            .header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 20px;
-                background-color: rgb(33, 33, 33);
-                padding: 10px;
-            }
-            .home-link {
-                padding: 10px 20px;
-                background-color: rgb(128, 128, 128);
-                color: white;
-                text-decoration: none;
-                border-radius: 3px;
-            }
-            .home-link:hover {
-                background-color: #D4D4D4;
-            }
-            h2 {
-                color: white;
-            }
-            a {
-                color: white;
-                text-decoration: none;
-            }
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                background-color: #fff;
-                margin-top: 20px;
-                color: #000;
-            }
-            table, th, td {
-                border: 1px solid #ddd;
-                padding: 8px;
-                text-align: left;
-            }
-            th {
-                background-color: #555555;
-                color: white;
-            }
-            .back{
-                text-decoration: underline;
-            }
-        </style>
+        <link rel="stylesheet" href="../CSS/assesment.css"/>
     </head>
     <body>
         <div class="header">
