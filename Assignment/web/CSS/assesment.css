@@ -1,14 +1,59 @@
-/* styles.css */
-table {
-    width: 50%;
-    border-collapse: collapse;
-    margin-top: 20px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: rgb(33, 33, 33);
+    color: white;
 }
-th, td {
-    border: 1px solid black;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: rgb(33, 33, 33);
+    padding: 10px;
+}
+
+.home-link {
+    padding: 10px 20px;
+    background-color: rgb(128, 128, 128);
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.home-link:hover {
+    background-color: #D4D4D4;
+}
+
+h2 {
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin-top: 20px;
+    color: #000;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
+
 th {
-    background-color: #f2f2f2;
+    background-color: #555555;
+    color: white;
+}
+
+.back {
+    text-decoration: underline;
 }

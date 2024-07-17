@@ -14,7 +14,7 @@
         </header>
 
         <div class="header-content">
-            <h2>Welcome Lecturer!</h2>
+            <h2>Welcome Student!</h2>
             <div class="user-box" onclick="toggleLogoutButton()" aria-label="User menu">
                 <span id="username">${sessionScope.user.username}</span>
                 <div id="logoutButton" class="logout-button">

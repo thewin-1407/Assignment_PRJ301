@@ -1,45 +1,67 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+    margin: 20px;
+    background-color: rgb(33, 33, 33);
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: rgb(33, 33, 33);
+    padding: 10px;
+}
+
+.home-link {
+    padding: 10px 20px;
+    background-color: rgb(128, 128, 128);
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.home-link:hover {
+    background-color: #D4D4D4;
 }
 
 .container {
-    width: 80%;
-    margin: 20px auto;
-}
-
-h1 {
-    text-align: center;
-    color: #333;
+    position: relative;
+    width: 100%;
 }
 
 .subject-table {
     width: 100%;
     border-collapse: collapse;
+    background-color: #fff;
     margin-top: 20px;
+    color: #000;
 }
 
-.subject-table th, .subject-table td {
+.subject-table th, .subject-table td, .subject-table th {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
 .subject-table th {
-    background-color: #f2f2f2;
-    color: #333;
+    background-color: #555555;
+    color: white;
 }
 
-.subject-table td {
-    background-color: #fff;
-}
-
-.subject-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+.subject-table tr {
+    cursor: pointer;
 }
 
 .subject-table tr:hover {
-    background-color: #e0e0e0;
+    background-color: #fff;
+}
+
+.subject-table td {
+    color: black;
+}
+
+.subject-table td:hover {
+    background-color: #D4D4D4;
 }
