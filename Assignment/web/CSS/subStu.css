@@ -1,7 +1,29 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
+    margin: 20px;
+    background-color: rgb(33, 33, 33);
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: rgb(33, 33, 33);
+    padding: 10px;
+}
+
+.home-link {
+    padding: 10px 20px;
+    background-color: rgb(128, 128, 128);
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.home-link:hover {
+    background-color: #D4D4D4;
 }
 
 ul {
@@ -10,13 +32,14 @@ ul {
 }
 
 li {
-    margin-bottom: 10px;
-    background-color: #ffffff;
     padding: 10px;
-    border-radius: 5px;
+    margin: 5px 0;
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 3px;
     cursor: pointer;
 }
 
 li:hover {
-    background-color: #f0f0f0;
+    background-color: #D4D4D4;
 }

@@ -7,10 +7,19 @@
     <head>
         <meta charset="UTF-8">
         <title>Student Grade Report</title>
-        <link rel="stylesheet" type="text/css" href="../CSS/gradeStu.css">
+        <link rel="stylesheet" href="../CSS/gradeStu.css"/>
     </head>
     <body>
+        <div class="header">
+            <div>
+                <a href="http://localhost:1407/Assignment/HomeStudent" class="home-link">Home</a>
+            </div>
+        </div>
+
         <h2>Student Grade Report</h2>
+
+        <br>
+        <a href="grade" class="back">Subjects for Student</a> <br>
 
         <table>
             <thead>
@@ -20,6 +29,7 @@
                     <th class="score">Score</th>
                 </tr>
             </thead>
+
             <tbody>
                 <c:forEach var="assessment" items="${assessments}">
                     <tr>
@@ -51,7 +61,7 @@
                             </c:forEach>
                         </c:forEach>
                         <c:if test="${totalWeight ne 0.0}">
-                            ${totalScore / totalWeight}
+                            <fmt:formatNumber value="${totalScore / totalWeight}" maxFractionDigits="2"/>
                         </c:if>
                     </td>
                 </tr>
@@ -76,9 +86,5 @@
                 </tr>
             </tbody>
         </table>
-        <br><br/>   
-        <a href="grade">Subjects for Student</a> <br><br/>
-        <a href="http://localhost:1407/Assignment/HomeStudent">Home</a>
-
     </body>
 </html>

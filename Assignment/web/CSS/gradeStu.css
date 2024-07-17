@@ -1,46 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: rgb(33, 33, 33);
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: rgb(33, 33, 33);
+    padding: 10px;
+}
+
+.home-link {
+    padding: 10px 20px;
+    background-color: rgb(128, 128, 128);
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.home-link:hover {
+    background-color: #D4D4D4;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
 }
-table, th, td {
-    border: 1px solid black;
+
+th, td {
+    border: 1px solid #ddd;
     padding: 8px;
+    text-align: left;
+    color: black;
 }
+
 th {
-    background-color: #f2f2f2;
+    background-color: #555555;
+    color: white;
 }
 
 .total-row {
     font-weight: bold;
-    text-align: center;
 }
 
 .process-row {
     font-weight: bold;
 }
 
-.total-row td {
-    text-align: center;
-}
-
-
-.process-row td {
-    text-align: center;
-}
-
-.process-row td.pass {
+.pass {
     color: green;
 }
 
-.process-row td.not-pass {
+.not-pass {
     color: red;
 }
 
-.process-row td.studying {
+.studying {
     color: blue;
 }
-
-td.weight, td.score {
-    text-align: center;
+.back{
+    color: white;
 }
-
