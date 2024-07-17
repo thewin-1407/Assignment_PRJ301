@@ -1,57 +1,74 @@
 body {
     font-family: Arial, sans-serif;
-}
-
-h2 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-table {
-    width: 80%;
-    border-collapse: collapse;
-    margin: 20px auto;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #f5f5f5;
-}
-
-a {
-    display: block;
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-    padding: 10px;
-}
-
-
-
-a[href^="http://localhost:1407/Assignment/HomeStudent"] {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4CAF50;
+    margin: 20px;
+    background-color: rgb(33, 33, 33);
     color: white;
-    text-align: center;
-    border-radius: 5px;
-    margin-top: 20px;
 }
 
-a[href^="http://localhost:1407/Assignment/HomeStudent"]:hover {
-    background-color: #45a049;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: rgb(33, 33, 33);
+    padding: 10px;
+}
+
+.home-link {
+    padding: 10px 20px;
+    background-color: rgb(128, 128, 128);
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.home-link:hover {
+    background-color: #D4D4D4;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.subject-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin-top: 20px;
+    color: #000;
+}
+
+.subject-table th, .subject-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.subject-table th {
+    background-color: #555555;
+    color: white;
+}
+
+.subject-table tr {
+    cursor: pointer;
+}
+
+.subject-table tr:hover {
+    background-color: #fff;
+}
+
+.subject-table td {
+    color: black;
+}
+
+.subject-table td:hover {
+    background-color: #D4D4D4;
+}
+
+.subject-table a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 8px;
 }

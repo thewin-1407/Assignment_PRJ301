@@ -6,11 +6,19 @@
     <head>
         <meta charset="UTF-8">
         <title>Class Details</title>
-        <link rel="stylesheet" type="text/css" href="../CSS/viewclassStu.css">
+        <link rel="stylesheet" href="../CSS/viewclassStu.css"/>
     </head>
     <body>
+        <div class="header">
+            <div>
+                <a href="http://localhost:1407/Assignment/HomeStudent" class="home-link">Home</a>
+            </div>
+        </div>
+
         <h2>Class Details</h2>
 
+        <br/>
+        <a href="mycourses" class="back">Back to Courses</a> <br/>
         <h3 class="lecturer-name">Lecturer:</h3>
         <div class="lecturer-name">${lecturer.name}</div>
 
@@ -31,9 +39,5 @@
                 </c:forEach>
             </tbody>
         </table>
-        <br/>
-        <a href="mycourses">Back to Courses</a> <br/><br/>
-        <a href="http://localhost:1407/Assignment/HomeStudent">Home</a> <br/><br/>
-        <a href="http://localhost:1407/Assignment/logout">Logout</a>
     </body>
 </html>
