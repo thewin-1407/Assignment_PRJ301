@@ -1,4 +1,4 @@
-package controller.exam;
+package controller.lecturers;
 
 import controller.auth.BaseRequiredLecturerAuthenticationController;
 import dal.ExamDBContext;
