@@ -41,7 +41,7 @@ public class TakeExamController extends BaseRequiredLecturerAuthenticationContro
         request.setAttribute("exams", exams);
         request.setAttribute("grades", grades);
 
-        request.getRequestDispatcher("../View/exam/take.jsp").forward(request, response);
+        request.getRequestDispatcher("../View/lecturers/score.jsp").forward(request, response);
 
     }
 
@@ -82,7 +82,7 @@ public class TakeExamController extends BaseRequiredLecturerAuthenticationContro
         for (Integer eid : eids) {
             url_param += "&eid=" + eid;
         }
-        response.sendRedirect("take?cid=" + cid + url_param);
+        response.sendRedirect("score?cid=" + cid + url_param);
 
     }
 

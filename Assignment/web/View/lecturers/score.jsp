@@ -18,7 +18,7 @@
 
         <h2>Grading Editor</h2>
 
-        <form action="take" method="POST">
+        <form action="score" method="POST">
             <table border="1px">
                 <tr>
                     <td></td>

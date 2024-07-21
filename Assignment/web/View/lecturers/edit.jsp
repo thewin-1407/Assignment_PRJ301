@@ -22,7 +22,7 @@
             <c:choose>
                 <c:when test="${empty requestScope.exams}">
                     <c:if test="${not empty requestScope.courses}">
-                        <form action="lecturer" method="POST">
+                        <form action="edit" method="POST">
                             <input type="hidden" name="lid" value="${param.lid}"/>
                             Course:
                             <select name="cid">
@@ -38,7 +38,7 @@
                     </c:if>
                 </c:when>
                 <c:otherwise>
-                    <form action="take" method="GET">
+                    <form action="score" method="GET">
                         <input type="hidden" name="cid" value="${param.cid}"/>
                         <div class="exam-list">
                             <c:forEach items="${requestScope.exams}" var="e">
