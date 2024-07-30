@@ -44,6 +44,10 @@
         <servlet-name>GradeReportStudentController</servlet-name>
         <servlet-class>controller.students.GradeReportStudentController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManualServlet</servlet-name>
+        <servlet-class>ManualController.ManualServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeStudentController</servlet-name>
         <url-pattern>/HomeStudent</url-pattern>
@@ -65,20 +69,12 @@
         <url-pattern>/lecturers/subject</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ViewAssessmentController</servlet-name>
-        <url-pattern>/subject/assessment</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>GradeReportLecturerController</servlet-name>
         <url-pattern>/lecturers/grade</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewSubjectStudentController</servlet-name>
         <url-pattern>/students/subject</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ViewAssesmentController</servlet-name>
-        <url-pattern>/subject/assesment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewMyCourseStudentController</servlet-name>
@@ -103,6 +99,18 @@
     <servlet-mapping>
         <servlet-name>TakeExamController</servlet-name>
         <url-pattern>/lecturers/score</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManualServlet</servlet-name>
+        <url-pattern>/manual</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAssessmentController</servlet-name>
+        <url-pattern>/lecturers/assessment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAssesmentController</servlet-name>
+        <url-pattern>/students/assessment</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>View/auth/login.jsp</welcome-file>
