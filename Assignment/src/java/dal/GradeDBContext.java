@@ -61,54 +61,48 @@ public class GradeDBContext extends DBContext<Grade> {
     }
 
     public void insertGradesForCourse(int cid, ArrayList<Grade> grades) {
-        List<Integer> eids = grades.stream().map(grade -> grade.getExam().getId()).collect(Collectors.toList());
-
-        if (eids.isEmpty()) {
-            throw new IllegalArgumentException("List of eids cannot be empty");
+        if (grades.isEmpty()) {
+            throw new IllegalArgumentException("List of grades cannot be empty");
         }
 
-        StringBuilder sql_remove = new StringBuilder("DELETE FROM grades WHERE eid IN (");
+        List<Integer> eids = grades.stream()
+                .map(grade -> grade.getExam().getId())
+                .distinct()
+                .collect(Collectors.toList());
+
+        StringBuilder sqlRemove = new StringBuilder("DELETE FROM grades WHERE eid IN (");
         for (int i = 0; i < eids.size(); i++) {
-            sql_remove.append("?");
+            sqlRemove.append("?");
             if (i < eids.size() - 1) {
-                sql_remove.append(", ");
+                sqlRemove.append(", ");
             }
         }
-        sql_remove.append(") AND eid IN (SELECT e.eid FROM exams e WHERE e.aid "
-                + "IN (SELECT a.aid FROM assesments a WHERE a.subid "
-                + "IN (SELECT c.subid FROM courses c WHERE c.cid = ?)))");
+        sqlRemove.append(") AND sid IN (SELECT sid FROM courses_students WHERE cid = ?)");
 
-        String sql_insert = """
-                        INSERT INTO [grades]
-                                   ([eid]
-                                   ,[sid]
-                                   ,[score])
-                             VALUES
-                                   (?
-                                   ,?
-                                   ,?)""";
+        String sqlInsert = "INSERT INTO grades (eid, sid, score) VALUES (?, ?, ?)";
 
-        PreparedStatement stm_remove = null;
-        ArrayList<PreparedStatement> stm_inserts = new ArrayList<>();
+        PreparedStatement stmRemove = null;
+        PreparedStatement stmInsert = null;
 
         try {
             connection.setAutoCommit(false);
-            stm_remove = connection.prepareStatement(sql_remove.toString());
 
+            stmRemove = connection.prepareStatement(sqlRemove.toString());
             for (int i = 0; i < eids.size(); i++) {
-                stm_remove.setInt(i + 1, eids.get(i));
+                stmRemove.setInt(i + 1, eids.get(i));
             }
-            stm_remove.setInt(eids.size() + 1, cid);
-            stm_remove.executeUpdate();
+            stmRemove.setInt(eids.size() + 1, cid);
+            stmRemove.executeUpdate();
 
+            stmInsert = connection.prepareStatement(sqlInsert);
             for (Grade grade : grades) {
-                PreparedStatement stm_insert = connection.prepareStatement(sql_insert);
-                stm_insert.setInt(1, grade.getExam().getId());
-                stm_insert.setInt(2, grade.getStudent().getId());
-                stm_insert.setFloat(3, grade.getScore());
-                stm_insert.executeUpdate();
-                stm_inserts.add(stm_insert);
+                stmInsert.setInt(1, grade.getExam().getId());
+                stmInsert.setInt(2, grade.getStudent().getId());
+                stmInsert.setFloat(3, grade.getScore());
+                stmInsert.addBatch();
             }
+            stmInsert.executeBatch();
+
             connection.commit();
         } catch (SQLException ex) {
             Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,11 +114,11 @@ public class GradeDBContext extends DBContext<Grade> {
         } finally {
             try {
                 connection.setAutoCommit(true);
-                if (stm_remove != null) {
-                    stm_remove.close();
+                if (stmRemove != null) {
+                    stmRemove.close();
                 }
-                for (PreparedStatement stm_insert : stm_inserts) {
-                    stm_insert.close();
+                if (stmInsert != null) {
+                    stmInsert.close();
                 }
                 connection.close();
             } catch (SQLException ex) {

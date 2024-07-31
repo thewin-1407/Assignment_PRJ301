@@ -1,9 +1,3 @@
-<%-- 
-    Document   : instruction
-    Created on : 27 thg 7, 2024, 11:09:25
-    Author     : thang
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
