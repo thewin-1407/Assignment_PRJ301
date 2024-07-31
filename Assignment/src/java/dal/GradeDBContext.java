@@ -5,8 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import model.Exam;
 import model.Grade;
 import model.Student;
@@ -59,28 +61,44 @@ public class GradeDBContext extends DBContext<Grade> {
     }
 
     public void insertGradesForCourse(int cid, ArrayList<Grade> grades) {
-        String sql_remove = """
-                            DELETE FROM grades WHERE eid IN (SELECT e.eid FROM exams e
-                            WHERE e.aid IN (SELECT a.aid FROM assesments a 
-                            WHERE a.subid IN (SELECT c.subid FROM courses c WHERE c.cid = ?)))""";
+        List<Integer> eids = grades.stream().map(grade -> grade.getExam().getId()).collect(Collectors.toList());
+
+        if (eids.isEmpty()) {
+            throw new IllegalArgumentException("List of eids cannot be empty");
+        }
+
+        StringBuilder sql_remove = new StringBuilder("DELETE FROM grades WHERE eid IN (");
+        for (int i = 0; i < eids.size(); i++) {
+            sql_remove.append("?");
+            if (i < eids.size() - 1) {
+                sql_remove.append(", ");
+            }
+        }
+        sql_remove.append(") AND eid IN (SELECT e.eid FROM exams e WHERE e.aid "
+                + "IN (SELECT a.aid FROM assesments a WHERE a.subid "
+                + "IN (SELECT c.subid FROM courses c WHERE c.cid = ?)))");
 
         String sql_insert = """
-                            INSERT INTO [grades]
-                                       ([eid]
-                                       ,[sid]
-                                       ,[score])
-                                 VALUES
-                                       (?
-                                       ,?
-                                       ,?)""";
+                        INSERT INTO [grades]
+                                   ([eid]
+                                   ,[sid]
+                                   ,[score])
+                             VALUES
+                                   (?
+                                   ,?
+                                   ,?)""";
 
         PreparedStatement stm_remove = null;
         ArrayList<PreparedStatement> stm_inserts = new ArrayList<>();
 
         try {
             connection.setAutoCommit(false);
-            stm_remove = connection.prepareStatement(sql_remove);
-            stm_remove.setInt(1, cid);
+            stm_remove = connection.prepareStatement(sql_remove.toString());
+
+            for (int i = 0; i < eids.size(); i++) {
+                stm_remove.setInt(i + 1, eids.get(i));
+            }
+            stm_remove.setInt(eids.size() + 1, cid);
             stm_remove.executeUpdate();
 
             for (Grade grade : grades) {
@@ -102,7 +120,9 @@ public class GradeDBContext extends DBContext<Grade> {
         } finally {
             try {
                 connection.setAutoCommit(true);
-                stm_remove.close();
+                if (stm_remove != null) {
+                    stm_remove.close();
+                }
                 for (PreparedStatement stm_insert : stm_inserts) {
                     stm_insert.close();
                 }
