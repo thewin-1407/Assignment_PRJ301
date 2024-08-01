@@ -1,5 +1,6 @@
 package controller.auth;
 
+import dal.AdminDBContext;
 import dal.LecturerAccDBContext;
 import dal.StudentAccDBContext;
 import java.io.IOException;
@@ -8,6 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Admin;
 import model.Lecturer_Account;
 import model.Student_Account;
 
@@ -40,6 +42,15 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", stuUser);
             response.sendRedirect("HomeStudent");
+            return;
+        }
+
+        AdminDBContext adb = new AdminDBContext();
+        Admin adminUser = adb.getAdminAccount(username, password);
+        if (adminUser != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", adminUser);
+            response.sendRedirect("HomeAdmin");
             return;
         }
 
