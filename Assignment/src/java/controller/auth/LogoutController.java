@@ -6,7 +6,6 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Admin;
 import model.Lecturer_Account;
 import model.Student_Account;
 
@@ -32,9 +31,6 @@ public class LogoutController extends HttpServlet {
                 request.getSession().removeAttribute("user");
             } else if (userObj instanceof Student_Account) {
                 Student_Account studentAccount = (Student_Account) userObj;
-                request.getSession().removeAttribute("user");
-            } else if (userObj instanceof Admin) {
-                Admin adminAccount = (Admin) userObj;
                 request.getSession().removeAttribute("user");
             }
         }
