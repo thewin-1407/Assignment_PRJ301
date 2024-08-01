@@ -22,9 +22,9 @@
             </div>
         </div>
         <div class="content">
-            <div class="box" onclick="redirectTo('http://localhost:1407/Assignment/lecturers/edit')" aria-label="Edit Grade">Edit Grade</div>
-            <div class="box" onclick="redirectTo('http://localhost:1407/Assignment/lecturers/mycourses')" aria-label="My Courses">My Courses</div>
-            <div class="box" onclick="redirectTo('http://localhost:1407/Assignment/lecturers/subject')" aria-label="Subject">Subject</div>
+            <div class="box" onclick="window.location.href = 'lecturers/edit'" aria-label="Edit Grade">Edit Grade</div>
+            <div class="box" onclick="window.location.href = 'lecturers/mycourses'" aria-label="My Courses">My Courses</div>
+            <div class="box" onclick="window.location.href = 'lecturers/subject'" aria-label="Subject">Subject</div>
         </div>
     </body>
 </html>

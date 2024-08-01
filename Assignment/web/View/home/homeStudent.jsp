@@ -24,9 +24,9 @@
         </div>
 
         <div class="content">
-            <div class="box" onclick="redirectTo('http://localhost:1407/Assignment/students/mycourses')" aria-label="My Courses">My Courses</div>
-            <div class="box" onclick="redirectTo('http://localhost:1407/Assignment/students/grade')" aria-label="Grade Report">Grade Report</div>
-            <div class="box" onclick="redirectTo('http://localhost:1407/Assignment/students/subject')" aria-label="Subject">Subject</div>
+            <div class="box" onclick="window.location.href = 'students/mycourses'" aria-label="My Courses">My Courses</div>
+            <div class="box" onclick="window.location.href = 'students/grade'" aria-label="Grade Report">Grade Report</div>
+            <div class="box" onclick="window.location.href = 'students/subject'" aria-label="Subject">Subject</div>
         </div>
     </body>
 </html>

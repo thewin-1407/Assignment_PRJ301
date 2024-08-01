@@ -12,7 +12,7 @@
     <body>
         <div class="header">
             <div>
-                <a href="http://localhost:1407/Assignment/HomeLecturer" class="home-link">Home</a>
+                <a onclick="window.location.href = '../HomeLecturer'" class="home-link">Home</a>
             </div>
         </div>
 

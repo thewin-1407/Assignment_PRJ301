@@ -11,7 +11,7 @@
     <body>
         <div class="header">
             <div>
-                <a href="http://localhost:1407/Assignment/HomeLecturer" class="home-link">Home</a>
+                <a onclick="window.location.href = '../HomeLecturer'" class="home-link">Home</a>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
                     <c:forEach items="${requestScope.courses}" var="course">
                         <tr>
                             <td><a href="viewclass?cid=${course.id}">${course.name}</a></td>
-                            <td><button onclick="location.href = 'http://localhost:1407/Assignment/lecturers/grade?cid=${course.id}'">Grade Report</button></td>
+                            <td><button onclick="window.location.href = '../lecturers/grade?cid=${course.id}'">Grade Report</button></td>
                         </tr>
                     </c:forEach>
                 </tbody>

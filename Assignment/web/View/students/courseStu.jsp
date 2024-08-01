@@ -16,7 +16,7 @@
 
         <div class="header">
             <div>
-                <a href="http://localhost:1407/Assignment/HomeStudent" class="home-link">Home</a>
+                <a onclick="window.location.href = '../HomeStudent'" class="home-link">Home</a>
             </div>
         </div>
 

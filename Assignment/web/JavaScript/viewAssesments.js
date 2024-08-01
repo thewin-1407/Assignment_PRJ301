@@ -13,9 +13,9 @@ function navigateHomeofSubject() {
     var currentUrl = window.location.href;
 
     if (currentUrl.indexOf("/students/subject") !== -1) {
-        window.location.href = 'http://localhost:1407/Assignment/HomeStudent';
+        window.location.href = '../HomeStudent';
     } else if (currentUrl.indexOf("/lecturers/subject") !== -1) {
-        window.location.href = 'http://localhost:1407/Assignment/HomeLecturer';
+        window.location.href = '../HomeLecturer';
     }
 }
 
@@ -23,9 +23,9 @@ function navigateBackToSubjectList() {
     var currentUrl = window.location.href;
 
     if (currentUrl.indexOf("/students/assessment") !== -1) {
-        window.location.href = 'http://localhost:1407/Assignment/students/subject';
+        window.location.href = '../students/subject';
     } else if (currentUrl.indexOf("/lecturers/assessment") !== -1) {
-        window.location.href = 'http://localhost:1407/Assignment/lecturers/subject';
+        window.location.href = '../lecturers/subject';
     }
 }
 
@@ -33,8 +33,8 @@ function navigateHomeofAssessments() {
     var currentUrl = window.location.href;
 
     if (currentUrl.indexOf("/students/assessment") !== -1) {
-        window.location.href = 'http://localhost:1407/Assignment/HomeStudent';
+        window.location.href = '../HomeStudent';
     } else if (currentUrl.indexOf("/lecturers/assessment") !== -1) {
-        window.location.href = 'http://localhost:1407/Assignment/HomeLecturer';
+        window.location.href = '../HomeLecturer';
     }
 }
