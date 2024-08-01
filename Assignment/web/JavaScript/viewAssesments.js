@@ -3,9 +3,9 @@ function goToAssessment(subjectId, event) {
     var currentUrl = window.location.href;
 
     if (currentUrl.indexOf("/students/subject") !== -1) {
-        window.location.href = '/Assignment/students/assessment?subid=' + subjectId;
+        window.location.href = 'assessment?subid=' + subjectId;
     } else if (currentUrl.indexOf("/lecturers/subject") !== -1) {
-        window.location.href = '/Assignment/lecturers/assessment?subid=' + subjectId;
+        window.location.href = 'assessment?subid=' + subjectId;
     }
 }
 

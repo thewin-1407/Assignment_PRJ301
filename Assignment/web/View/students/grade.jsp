@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,16 +31,22 @@
             </thead>
 
             <tbody>
+                <c:set var="hasMissingScore" value="false" />
                 <c:forEach var="assessment" items="${assessments}">
                     <tr>
                         <td class="ass">${assessment.name}</td>
                         <td class="weight"><fmt:formatNumber value="${assessment.weight * 100}" type="number" maxFractionDigits="0"/>%</td>
                         <td class="score">
+                            <c:set var="found" value="false" />
                             <c:forEach var="grade" items="${grades}">
                                 <c:if test="${grade.exam.assessment.id eq assessment.id}">
                                     ${grade.score}
+                                    <c:set var="found" value="true" />
                                 </c:if>
                             </c:forEach>
+                            <c:if test="${not found}">
+                                <c:set var="hasMissingScore" value="true" />
+                            </c:if>
                         </td>
                     </tr>
                 </c:forEach>
@@ -70,15 +76,12 @@
                     <td><strong>Process</strong></td>
                     <td></td>
                     <td class="<c:choose>
-                            <c:when test='${empty grades or totalWeight eq 0.0}'>studying
-                            </c:when>
-                            <c:when test='${totalScore / totalWeight >= 5.0}'>pass
-                            </c:when>
-                            <c:otherwise>not-pass
-                            </c:otherwise>
+                            <c:when test='${hasMissingScore}'>studying</c:when>
+                            <c:when test='${totalScore / totalWeight >= 5.0}'>pass</c:when>
+                            <c:otherwise>not-pass</c:otherwise>
                         </c:choose>">
                         <c:choose>
-                            <c:when test='${empty grades or totalWeight eq 0.0}'>Studying</c:when>
+                            <c:when test='${hasMissingScore}'>Studying</c:when>
                             <c:when test='${totalScore / totalWeight >= 5.0}'>Pass</c:when>
                             <c:otherwise>Not Pass</c:otherwise>
                         </c:choose>
